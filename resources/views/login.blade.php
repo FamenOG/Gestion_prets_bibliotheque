@@ -27,7 +27,7 @@
             </form>
         </div>
         <div class="bg-gradient">
-            <img src="{{URL::asset('/assets/img/logo-white.png')}}" alt="">
+            <img src="{{ URL::asset('/assets/img/logo-white.png') }}" alt="">
         </div>
     </div>
 </body>
