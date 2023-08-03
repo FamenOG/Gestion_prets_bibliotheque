@@ -17,8 +17,11 @@ use App\Http\Controllers\LibrarianController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/insert', [LibrarianController::class,"insert"]);
 
+Route::get('/sign-in', function () {
+    return view('user.sign-in');
+});
