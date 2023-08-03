@@ -18,7 +18,7 @@
     <div class="super">
         <div class="formulaire">
             <h1 class="title">Welcome to IKOPPEN IT</h1>
-            <form action="/login_traitement" method="POST">
+            <form action="/login-traitement" method="POST">
                 <div class="input">
                     @csrf
                     <input type="text" name="username" placeholder="Username">

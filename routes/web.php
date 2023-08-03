@@ -20,9 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [UserController::class,"login"]);
-Route::post('/login_traitement', [UserController::class,"doLogin"]);
+Route::post('/login-traitement', [UserController::class,"doLogin"]);
 
-Route::get('/sign-in', [ClientController::class,"signIn"]);
-Route::post('/create-client', [ClientController::class,"createClient"]);
+Route::get('/sign-in/{role}', [UserController::class,"signIn"]);
+Route::post('/create-client/{role}', [UserController::class, "createUser"]);
 
 

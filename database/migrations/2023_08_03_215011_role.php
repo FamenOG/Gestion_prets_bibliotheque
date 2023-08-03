@@ -16,9 +16,6 @@ return new class extends Migration
                 $table->id();
                 $table->string('nom');
             });
-            Schema::table('users', function (Blueprint $table) {
-                $table->foreignIdFor(\App\Models\Role::class)->cascadeOnDelete();
-            });
         }
     }
 
@@ -28,8 +25,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('role');
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Role::class)->cascadeOnDelete();
-        });
     }
 };

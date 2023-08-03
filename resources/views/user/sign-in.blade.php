@@ -12,27 +12,27 @@
 </head>
 
 <body>
-    <div class="container w-50 mt-5 shadow p-5 rounded-3">
-        <h1 class="text-center">Inscription</h1>
-        <form action="/create-client" method="post" class="mt-4" id="form">
+    <div class="container w-50 my-5 shadow p-5 rounded-3">
+        <h1 class="text-center">Inscription {{ ($role == 1) ? "Client" : "Librarian" }}</h1>
+        <form action="/create-client/{{ $role }}" method="post" class="my-4" id="form">
             @csrf
             <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Nom</label>
-                    <input type="text" class="form-control" data-parsley-required="true" name="nom" value="{{ old('nom')}}">
+                    <input type="text" class="form-control" data-parsley-required="true" name="nom" value="{{ old('nom') }}">
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Prenom</label>
-                    <input type="text" class="form-control" data-parsley-required="true" name="prenom" value="{{ old('prenom')}}">
+                    <input type="text" class="form-control" data-parsley-required="true" name="prenom" value="{{ old('prenom') }}">
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" data-parsley-required="true" name="email" value="{{ old('email')}}">
+                <input type="email" class="form-control" data-parsley-required="true" name="email" value="{{ old('email') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Numero telephone</label>
-                <input type="text" maxlength="10" class="form-control" data-parsley-required="true" name="telephone" value="{{ old('telephone')}}">
+                <input type="number" maxlength="10" class="form-control" data-parsley-required="true" name="telephone" value="{{ old('telephone') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
