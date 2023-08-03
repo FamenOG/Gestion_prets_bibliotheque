@@ -25,4 +25,6 @@ Route::post('/login-traitement', [UserController::class,"doLogin"]);
 Route::get('/sign-in/{role}', [UserController::class,"signIn"]);
 Route::post('/create-client/{role}', [UserController::class, "createUser"]);
 
-
+Route::get('/list-book', function () {
+    return view('client.list-book');
+});
