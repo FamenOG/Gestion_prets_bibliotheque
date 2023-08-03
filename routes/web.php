@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LibrarianController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [UserController::class,"login"]);
+Route::post('/login_traitement', [UserController::class,"doLogin"]);
 
-Route::get('/sign-in', function () {
-    return view('user.sign-in');
-});
+Route::get('/sign-in', [ClientController::class,"signIn"]);
+Route::post('/create-client', [ClientController::class,"createClient"]);
+
+
