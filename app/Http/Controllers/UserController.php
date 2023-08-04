@@ -47,7 +47,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($infos)) {
-            $user = Auth::user(); //? Instance de lutilisateur authentifié
+            $user = Auth::user(); //? Instance de l'utilisateur authentifié
             $request->session()->put('user', $user);
             $request->session()->regenerate();
             return redirect('/list-book');

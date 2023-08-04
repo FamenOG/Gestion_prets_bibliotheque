@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('book', function (Blueprint $table) {
             $table->id();
-
+            $table->string('title');
+            $table->string('author');
+            $table->date('publication_date')->nullable();
+            $table->string('ISBN')->unique();            
+            $table->string('cover');  // Utiliser le type "string" pour le chemin vers le fichier de couverture du livre
+            $table->text('summary'); // Utiliser le type "text" pour stocker un résumé plus long
             $table->timestamps();
         });
     }

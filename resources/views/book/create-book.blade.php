@@ -23,20 +23,20 @@
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Auteur</label>
-                    <input type="text" class="form-control" data-parsley-required="true" name="auteur" value="{{ old('auteur') }}">
+                    <input type="text" class="form-control" data-parsley-required="true" name="author" value="{{ old('auteur') }}">
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Date</label>
-                <input type="date" class="form-control" data-parsley-required="true" name="date" value="{{ old('date') }}">
+                <input type="date" class="form-control" data-parsley-required="true" name="publication_date" value="{{ old('date') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">ISBN</label>
                 <input type="number" maxlength="13" class="form-control" data-parsley-required="true" name="ISBN" value="{{ old('ISBN') }}">
             </div>
             <div class="mb-3">
-                <label class="form-label">Picture</label>
-                <input type="file" class="form-control" data-parsley-required="true" name="picture" value="{{ old('picture') }}">
+                <label class="form-label">Cover</label>
+                <input type="file" class="form-control" data-parsley-required="true" name="cover" value="{{ old('picture') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Summary</label>
