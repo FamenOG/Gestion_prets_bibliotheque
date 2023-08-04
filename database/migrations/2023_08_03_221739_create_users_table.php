@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id');
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('role_id')->references('id')->on('role')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('role');
         });
     }
 
@@ -31,6 +31,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('user', function (Blueprint $table) {
+            $table->dropForeign(['role_id']);
+        });
         Schema::dropIfExists('user');
     }
 };
