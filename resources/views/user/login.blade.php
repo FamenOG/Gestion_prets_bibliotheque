@@ -10,29 +10,29 @@
 </head>
 
 <body>
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{session('status')}}
-    </div>
-    @endif
+
     <div class="super">
         <div class="formulaire">
             <h1 class="title">Welcome to IKOPPEN IT</h1>
             <form action="/login-traitement" method="POST">
+                @csrf
                 <div class="input">
-                    @csrf
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="email" name="email" placeholder="Email">
                 </div>
                 <div class="input">
-                    @csrf
                     <input type="password" name="password" placeholder="Password">
                 </div>
                 <div class="input">
                     <input type="submit" value="Ok" class="btn dark">
                 </div>
-                <h3 class="account"><a href="/sign-in">S'inscrire</a></h3>
+                <h3 class="account"><a href="/sign-in/1">S'inscrire</a></h3>
             </form>
         </div>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li class="alert alert-danger">{{$error}}</li>
+            @endforeach
+        </ul>
         <div class="bg-gradient">
             <img src="{{ URL::asset('/assets/img/logo-white.png') }}" alt="">
         </div>

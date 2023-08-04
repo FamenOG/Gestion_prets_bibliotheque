@@ -32,7 +32,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Numero telephone</label>
-                <input type="number" maxlength="10" class="form-control" data-parsley-required="true" name="telephone" value="{{ old('telephone') }}">
+                <input type="text" maxlength="10" class="form-control" data-parsley-required="true" name="telephone" value="{{ old('telephone') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
