@@ -14,7 +14,7 @@
 <body>
     <div class="container w-50 my-5 shadow p-5 rounded-3">
         <h1 class="text-center">New book</h1>
-        <form action="/category-book/" method="post" class="my-4" id="form">
+        <form action="/category-book/" method="post" class="my-4" id="form" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col mb-3">
@@ -45,25 +45,25 @@
             <div class="mb-3">
                 <label class="form-label">Categorie</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="" name="categorie">
+                    <label class="form-check-label">
                         Drame
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" value="" name="categorie">
                     <label class="form-check-label" for="flexCheckChecked">
                         Horror
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" value="" name="categorie">
                     <label class="form-check-label" for="flexCheckChecked">
                         Comedie
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" value="" name="categorie">
                     <label class="form-check-label" for="flexCheckChecked">
                         Police
                     </label>

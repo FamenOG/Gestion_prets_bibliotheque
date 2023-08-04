@@ -15,10 +15,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/login', [UserController::class,"login"]);
 Route::post('/login-traitement', [UserController::class,"doLogin"]);
 Route::get('/sign-in/{role}', [UserController::class,"signIn"]);
@@ -36,6 +32,6 @@ Route::get('/create-book', function() {
     return view('book.create-book');
 });
 
-Route::get('/category-book', function() {
-    return view('book.category-book');
+Route::get('/catalog-book', function() {
+    return view('book.client.catalog-book');
 });
