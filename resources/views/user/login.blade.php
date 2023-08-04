@@ -27,12 +27,13 @@
                 </div>
                 <h3 class="account"><a href="/sign-in/1">S'inscrire</a></h3>
             </form>
+            <ul>
+                @foreach($errors->all() as $error)
+                <li class="alert alert-danger">{{$error}}</li>
+                @endforeach
+            </ul>
         </div>
-        <ul>
-            @foreach($errors->all() as $error)
-            <li class="alert alert-danger">{{$error}}</li>
-            @endforeach
-        </ul>
+
         <div class="bg-gradient">
             <img src="{{ URL::asset('/assets/img/logo-white.png') }}" alt="">
         </div>

@@ -38,7 +38,7 @@ class UserController extends Controller
 
         $client->save();
 
-        return redirect('/login')->with('role',$role);
+        return redirect('/login')->with('role', $role);
     }
 
 
@@ -49,17 +49,18 @@ class UserController extends Controller
 
     public function doLogin(Request $request)
     {
-        $infos=$request->validate([
+        $infos = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
-
-        if(Auth::attempt($infos)){
+    
+        if (Auth::attempt($infos)) {
+            $request->session()->regenerate();
             return redirect('/list-book');
+        } else {
+            return redirect('/login')->withErrors([
+                "error" => "Les informations de connexion sont invalides."
+            ]);
         }
-        else{
-            return redirect('/login');
-        };
     }
-}
+}    
