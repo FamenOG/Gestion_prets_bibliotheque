@@ -42,7 +42,34 @@
                 <label class="form-label">Summary</label>
                 <textarea name="summary" class="form-control" cols="30" rows="10" data-parsley-required="true"></textarea>
             </div>
-            <button type="submit" class="btn btn-success">Suivant</button>
+            <div class="mb-3">
+                <label class="form-label">Categorie</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Drame
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Horror
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Comedie
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Police
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">New book</button>
         </form>
         <ul>
             @foreach($errors->all() as $error)
