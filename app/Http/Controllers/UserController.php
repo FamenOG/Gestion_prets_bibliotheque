@@ -41,5 +41,4 @@ class UserController extends Controller
         return view('user.login')->with('status', 'Votre compte a été crée avec succès');
     }
 
-
 }
