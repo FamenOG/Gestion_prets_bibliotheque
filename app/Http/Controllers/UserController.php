@@ -45,8 +45,10 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-    
+
         if (Auth::attempt($infos)) {
+            $user = Auth::user(); //? Instance de lutilisateur authentifié
+            $request->session()->put('user', $user);
             $request->session()->regenerate();
             return redirect('/list-book');
         } else {
@@ -55,4 +57,4 @@ class UserController extends Controller
             ]);
         }
     }
-}    
+}

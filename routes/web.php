@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,8 @@ Route::get('/create-book', function() {
 
 Route::get('/catalog-book', function() {
     return view('book.client.catalog-book');
+});
+Route::get('/session', function(Request $request) {
+    $user = $request->session()->get('user');
+    return $user->role_id;
 });
