@@ -34,42 +34,48 @@
             <div class="card-body">
               <h5 class="card-title text-center">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>            </div>
+              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>         
+            </div>
         </div>
         <div class="shadow card m-4 g-col-4" style="width: 18rem;">
             <img src="{{ URL::asset('img/Kolkata Chai Co _ The Best Chai in the Game.png') }}" class="card-img-top" alt="..." style="width: 286px; height: 286px; object-fit: cover;">
             <div class="card-body">
               <h5 class="card-title text-center">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>            </div>
+              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>         
+            </div>
         </div>
         <div class="shadow card m-4 g-col-4" style="width: 18rem;">
             <img src="{{ URL::asset('img/Liz.png') }}" class="card-img-top" alt="..." style="width: 286px; height: 286px; object-fit: cover;">
             <div class="card-body">
               <h5 class="card-title text-center">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>            </div>
+              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>         
+            </div>
         </div>
         <div class="shadow card m-4 g-col-4" style="width: 18rem;">
             <img src="{{ URL::asset('img/Maressah.jpg') }}" class="card-img-top" alt="..." style="width: 286px; height: 286px; object-fit: cover;">
             <div class="card-body">
               <h5 class="card-title text-center">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>            </div>
+              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>         
+            </div>
         </div>
         <div class="shadow card m-4 g-col-4" style="width: 18rem;">
             <img src="{{ URL::asset('img/𝑺𝒐𝒑𝒉𝒊𝒆.jfif') }}" class="card-img-top" alt="..." style="width: 286px; height: 286px; object-fit: cover;">
             <div class="card-body">
               <h5 class="card-title text-center">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>            </div>
+              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>         
+            </div>
         </div>
         <div class="shadow card m-4 g-col-4" style="width: 18rem;">
             <img src="{{ URL::asset('img/téléchargement (1).jpeg') }}" class="card-img-top" alt="..." style="width: 286px; height: 286px; object-fit: cover;">
             <div class="card-body">
               <h5 class="card-title text-center">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>            </div>
+              <a href="/detail-book" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>         
+            </div>
         </div>
     </div>
 </body>

@@ -28,16 +28,8 @@ class UserController extends Controller
             'telephone' => 'required|numeric|unique:users|digits:10',
             'password' => 'required',
         ]);
-        $client = new User();
-        $client->role_id = $role;
-        $client->nom = $request->nom;
-        $client->prenom = $request->prenom;
-        $client->email = $request->email;
-        $client->telephone = $request->telephone;
-        $client->password = Hash::make($request->password);
-
+        $client = new User($request->nom, $request->prenom, $request->email,  Hash::make($request->password), $request->telephone, $role);
         $client->save();
-
         return redirect('/login')->with('role', $role);
     }
 
