@@ -14,7 +14,7 @@
 <body>
     <div class="container w-50 my-5 shadow p-5 rounded-3">
         <h1 class="text-center">New book</h1>
-        <form action="/category-book/" method="post" class="my-4" id="form" enctype="multipart/form-data">
+        <form action="/create-book/" method="post" class="my-4" id="form" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col mb-3">
@@ -23,12 +23,12 @@
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Auteur</label>
-                    <input type="text" class="form-control" data-parsley-required="true" name="author" value="{{ old('auteur') }}">
+                    <input type="text" class="form-control" data-parsley-required="true" name="author" value="{{ old('author') }}">
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Date</label>
-                <input type="date" class="form-control" data-parsley-required="true" name="publication_date" value="{{ old('date') }}">
+                <input type="date" class="form-control" data-parsley-required="true" name="publication_date" value="{{ old('publication_date') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">ISBN</label>
@@ -43,27 +43,27 @@
                 <textarea name="summary" class="form-control" cols="30" rows="10" data-parsley-required="true"></textarea>
             </div>
             <div class="mb-3">
-                <label class="form-label">Categorie</label>
+                <label class="form-label">Category</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" name="categorie">
+                    <input class="form-check-input" type="checkbox" value="" name="category">
                     <label class="form-check-label">
                         Drame
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" name="categorie">
+                    <input class="form-check-input" type="checkbox" value="" name="category">
                     <label class="form-check-label" for="flexCheckChecked">
                         Horror
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" name="categorie">
+                    <input class="form-check-input" type="checkbox" value="" name="category">
                     <label class="form-check-label" for="flexCheckChecked">
                         Comedie
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" name="categorie">
+                    <input class="form-check-input" type="checkbox" value="" name="category">
                     <label class="form-check-label" for="flexCheckChecked">
                         Police
                     </label>

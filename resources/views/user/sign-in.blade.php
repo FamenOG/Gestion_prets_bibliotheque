@@ -19,11 +19,11 @@
             <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Nom</label>
-                    <input type="text" class="form-control" data-parsley-required="true" name="nom" value="{{ old('nom') }}">
+                    <input type="text" class="form-control" data-parsley-required="true" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Prenom</label>
-                    <input type="text" class="form-control" data-parsley-required="true" name="prenom" value="{{ old('prenom') }}">
+                    <input type="text" class="form-control" data-parsley-required="true" name="firstname" value="{{ old('firstname') }}">
                 </div>
             </div>
             <div class="mb-3">

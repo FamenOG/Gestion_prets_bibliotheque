@@ -22,14 +22,14 @@ class UserController extends Controller
     public function createUser(Request $request, $role = 1)
     {
         $request->validate([
-            'nom' => 'required|string',
-            'prenom' => 'required|string',
-            'email' => 'required|email|unique:users',
-            'telephone' => 'required|numeric|unique:users|digits:10',
+            'name' => 'required|string',
+            'firstname' => 'required|string',
+            'email' => 'required|email|unique:user',
+            'telephone' => 'required|numeric|unique:user|digits:10',
             'password' => 'required',
         ]);
-        $client = new User($request->nom, $request->prenom, $request->email,  Hash::make($request->password), $request->telephone, $role);
-        $client->save();
+        $user = new User($request->name, $request->firstname, $request->email, Hash::make($request->password), $request->telephone, $role);
+        $user->save();
         return redirect('/login')->with('role', $role);
     }
 

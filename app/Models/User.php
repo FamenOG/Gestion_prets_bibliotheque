@@ -10,18 +10,19 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasFactory;
+    protected $table = 'user';
 
     public function __construct(
-        $nom = '',
-        $prenom = '',
+        $name = '',
+        $firstname = '',
         $email = '',
         $password = '',
         $telephone = '',
         $role_id = ''
     ) {
         $this->role_id = $role_id;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
+        $this->name = $name;
+        $this->firstname = $firstname;
         $this->email = $email;
         $this->password = $password;
         $this->telephone = $telephone;
