@@ -12,15 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('book_category', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('category_id');
 
             // Déclaration des clés étrangères et suppression en cascade
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-
-            // Déclaration de la clé primaire composée
-            $table->primary(['book_id', 'category_id']);
         });
     }
 

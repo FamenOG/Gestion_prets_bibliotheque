@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class Book extends Model
 {
@@ -29,6 +30,21 @@ class Book extends Model
     
     public function categories(){
         return $this->belongsToMany(Category::class);
+    }
+
+    public function insert($categories) {
+        try {
+            DB::beginTransaction();
+            $this->save();
+            foreach ($categories as $category) {
+                $category = new Category($category);
+                $category->assign($this);
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
     }
 
 }

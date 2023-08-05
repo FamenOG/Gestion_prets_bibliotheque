@@ -37,20 +37,10 @@ class BookController extends Controller
         ]);
         $file = $request->file('cover');
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $file->storeAs('public/img', $fileName);
+        $file->move(public_path('img'), $fileName);
 
-
-        $book= new Book($request->title,$request->author,$request->publication_date,$request->ISBN,$request->cover,$request->summary);
-        
-        // dd($request);    
-        $book->save();
-
-        $categories = $request->input('categories');
-
-        // Ajouter les catégories associées au livre dans la table de pivot book_category
-        // foreach ($categories as $category) {
-        $book->categories()->attach($categories);
-        // }
+        $book= new Book($request->title,$request->author,$request->publication_date,$request->ISBN,$fileName,$request->summary);
+        $book->insert($request->input('category'));
         return redirect('/book-catalog');
     }
     
