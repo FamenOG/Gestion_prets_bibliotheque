@@ -16,7 +16,7 @@
         <h1 class="text-center">New book</h1>
         <form action="/create-book/" method="post" class="my-4" id="form" enctype="multipart/form-data">
             @csrf
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Title</label>
                     <input type="text" class="form-control" data-parsley-required="true" name="title" value="{{ old('title') }}">
@@ -41,35 +41,17 @@
             <div class="mb-3">
                 <label class="form-label">Summary</label>
                 <textarea name="summary" class="form-control" cols="30" rows="10" data-parsley-required="true"></textarea>
-            </div> -->
+            </div>
             <div class="mb-3">
                 <label class="form-label">Category</label>
+                @foreach($categories as $category)
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="drame" name="category[]">
+                    <input class="form-check-input" type="checkbox" value="{{ $category->id }}" name="category[]">
                     <label class="form-check-label">
-                        Drame
+                        {{ $category->name}} 
                     </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="horror" name="category[]">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Horror
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="comedy" name="category[]">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Comedie
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" name="category">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Police
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-success">New book</button>
+                    @endforeach
+                    <button type="submit" class="btn btn-success">New book</button>
         </form>
         <ul>
             @foreach($errors->all() as $error)
