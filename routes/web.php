@@ -32,6 +32,9 @@ Route::get('/create-book', [BookController::class,"formCreate"]);
 Route::post('/create-book-traitement', [BookController::class,"create"]);
 
 
+Route::get('list-client', function() {
+    return view('client.list-client');
+});
 
 // Route::get('/session', function (Request $request) {
 //     $user = $request->session()->get('user');
