@@ -28,10 +28,9 @@ Route::get('/detail-book', [BookController::class, "details"]);
 
 Route::get('/library', [BookController::class, "library"]);
 
-Route::get('/create-book', function () {
-    $categories = Category::all();
-    return view('book.create-book', compact('categories'));
-});
+Route::get('/create-book', [BookController::class,"formCreate"]);
+Route::post('/create-book-traitement', [BookController::class,"create"]);
+
 
 
 // Route::get('/session', function (Request $request) {
