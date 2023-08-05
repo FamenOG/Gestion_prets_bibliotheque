@@ -40,3 +40,10 @@ Route::get('/session', function(Request $request) {
     $user = $request->session()->get('user');
     return $user->role_id;
 });
+Route::post('/create-book', function(Request $request) {
+    // dd($request->all());
+    $categories = $request->input('category');
+    foreach($categories as $category){
+        echo $category;
+    }
+});
