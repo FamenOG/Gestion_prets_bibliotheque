@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-
     public function signIn($role = 1)
     {
         if ($role > 2) {
