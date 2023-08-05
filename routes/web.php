@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,20 +21,16 @@ Route::get('/login', [UserController::class, "login"]);
 Route::post('/login-traitement', [UserController::class, "doLogin"]);
 Route::get('/sign-in/{role}', [UserController::class, "signIn"]);
 Route::post('/create-client/{role}', [UserController::class, "createUser"]);
-Route::post('/list-book', [UserController::class, "createUser"]);
 
-Route::get('/list-book', function () {
-    return view('book.client.list-book');
-});
-Route::get('/detail-book', function () {
-    return view('book.client.detail-book');
-});
+
+Route::get('/book-catalog', [BookController::class, "catalog"]);
+Route::get('/detail-book', [BookController::class, "details"]);
+
+Route::get('/library', [BookController::class, "library"]);
+
 Route::get('/create-book', function () {
     $categories = Category::all();
     return view('book.create-book', compact('categories'));
-});
-Route::get('/catalog-book', function () {
-    return view('book.client.catalog-book');
 });
 
 
