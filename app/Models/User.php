@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory;
     protected $table = 'user';
-    
+
 
     public function __construct(
         $name = '',
@@ -19,7 +19,8 @@ class User extends Authenticatable
         $email = '',
         $password = '',
         $telephone = '',
-        $role_id = ''
+        $role_id = '',
+        $numero = ''
     ) {
         $this->role_id = $role_id;
         $this->name = $name;
@@ -27,6 +28,6 @@ class User extends Authenticatable
         $this->email = $email;
         $this->password = $password;
         $this->telephone = $telephone;
+        $this->numero = $numero;
     }
-    
 }

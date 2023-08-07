@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     public function signIn($role = 1)
     {
@@ -30,7 +32,18 @@ class UserController extends Controller
             'telephone' => 'required|numeric|unique:user|digits:10',
             'password' => 'required',
         ]);
-        $user = new User($request->name, $request->firstname, $request->email, Hash::make($request->password), $request->telephone, $role);
+
+        $lastAdherent = User::orderBy('id', 'desc')->first(); 
+
+        if ($lastAdherent) {
+            $lastAdherentNumber = intval(substr($lastAdherent->numero_adherent, 2)); 
+            $newAdherentNumber = $lastAdherentNumber + 1;
+        } else {
+            $newAdherentNumber = 1;
+        }
+
+        $numeroAdherent = 'AD' . $newAdherentNumber;
+        $user = new User($request->name, $request->firstname, $request->email, Hash::make($request->password), $request->telephone, $role,$numeroAdherent);
         $user->save();
         return redirect('/login')->with('role', $role);
     }
@@ -41,7 +54,8 @@ class UserController extends Controller
         return view('user.login');
     }
 
-    public function logOut(Request $request) {
+    public function logOut(Request $request)
+    {
         $request->session()->invalidate();
         return redirect('/login');
     }
