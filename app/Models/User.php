@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory;
     protected $table = 'user';
+    
 
     public function __construct(
         $name = '',

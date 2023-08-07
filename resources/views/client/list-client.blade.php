@@ -13,21 +13,23 @@
     <div class="container">
         <h2 class="text-center mt-5">Customer list</h2>
         <div class="container justify-content-center d-flex mt-5">
-            <form class="d-flex w-50">
-              <input class="form-control me-2" type="search" placeholder="ID number" aria-label="Search">
+            <form action="/list-client" class="d-flex w-50">
+              <input class="form-control me-2" name="search" type="search" placeholder="ID number" aria-label="Search">
               <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
           </div>
+        @foreach ($users as $user)
         <div class="row shadow-sm p-3 rounded-3 my-5">
             <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
                 <div class="ms-3">
-                    <h5>Tendry Ny Avo</h5>
+                    <h5>{{ $user->name }}</h5>
                     ID number: 283081938
                 </div>
             </div>
             <button class="float-end btn btn-dark my-2">Borrow</button>
             <button class="float-end btn btn-dark my-2">Back</button>
         </div> 
+        @endforeach
     </div>
 </body>
 <script type="text/javascript" src="{{ URL::asset('bootstrap/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>

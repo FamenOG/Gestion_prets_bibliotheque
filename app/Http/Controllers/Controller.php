@@ -8,5 +8,15 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+    protected $user;
+
+    public function __construct() {
+        $this->middleware(function($request, $next) {
+            $this->user = session('user');
+            if ($this->user == null) throw new \Exception("Authentifiction is required", 500);
+            return $next($request);
+        });
+    }
+
     use AuthorizesRequests, ValidatesRequests;
 }

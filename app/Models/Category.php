@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Book;
 use Illuminate\Support\Facades\DB;
+use Exception;
 
 class Category extends Model
 {
-    protected $table = 'categories'; // Corrected the table name definition
     use HasFactory;
+    protected $table = 'categories'; // Corrected the table name definition
 
     public function __construct($id = '') {
         $this->id = $id;
     }
 
-    public function books()
-    {
+    public function books() {
         return $this->belongsToMany(Book::class);
     }
 

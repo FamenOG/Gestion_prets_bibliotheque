@@ -7,7 +7,7 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function show(){
+    public function show() {
         $categories= Category::all();
         return redirect('/create-book', compact('categories'));
     }

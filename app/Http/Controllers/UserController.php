@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+    public function __construct() {}
+
     public function signIn($role = 1)
     {
         if ($role > 2) {
@@ -38,6 +41,11 @@ class UserController extends Controller
         return view('user.login');
     }
 
+    public function logOut(Request $request) {
+        $request->session()->invalidate();
+        return redirect('/login');
+    }
+
     public function doLogin(Request $request)
     {
         $infos = $request->validate([
@@ -47,9 +55,9 @@ class UserController extends Controller
 
         if (Auth::attempt($infos)) {
             $user = Auth::user(); //? Instance de l'utilisateur authentifié
-            $request->session()->put('user', $user);
-            $request->session()->regenerate();
-            return redirect('/list-book');
+            \Session::put('user', $user);
+            \Session::regenerate();
+            return redirect('/book-catalog/1');
         } else {
             return redirect('/login')->withErrors([
                 "error" => "Les informations de connexion sont invalides."

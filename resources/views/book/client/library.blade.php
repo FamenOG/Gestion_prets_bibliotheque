@@ -10,12 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalog</title>
 </head>
+<style>
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
+</style>
 <body>
     <div class="container-fluid my-4 row">
-        <div class="ms-3 col-md-10 ms-5 w-50 shadow p-4 mt-5">
+        <div class="ms-3 col-md-10 ms-5 w-50 shadow p-4 mt-5" style="height: 500px;">
             <h2 class="text-center">Library</h2>
-            <div class="overflow-scroll h-50">
+            <div class="overflow-auto h-75 scroll">
                 <div class="row p-3 rounded-3 my-5">
                     <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
                         <a href="http://"><img src="{{ URL::asset('img/Kolkata Chai Co _ The Best Chai in the Game.png') }}" class="rounded-3" style="width: 100px; height: 100px; object-fit: cover;"></a>

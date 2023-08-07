@@ -9,3 +9,9 @@ INSERT INTO categories VALUES
 INSERT INTO book_category VALUES
     (1, 1)
     (1, 2);
+
+
+CREATE VIEW v_client AS 
+SELECT *
+FROM user
+WHERE role_id = 1;
