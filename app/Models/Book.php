@@ -77,5 +77,6 @@ class Book extends Model
         $this->update(['status' => $status]);
     }
 
+    
 }
 

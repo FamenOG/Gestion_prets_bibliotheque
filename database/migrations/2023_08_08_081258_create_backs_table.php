@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('librarian_id');
-            $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('loan_id');
             $table->dateTime('back_date');
             $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
