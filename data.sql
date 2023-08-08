@@ -32,7 +32,28 @@ WHERE status = 0;
 
 CREATE VIEW v_book_loaned AS
 SELECT b.*, l.loan_date, l.back_date, l.client_id, l.id as loan_id, c.name
-FROM loans l
+FROM v_loan_no_back l
     JOIN books b ON l.book_id=b.id
     JOIN v_librarian c ON c.id=l.librarian_id
 WHERE status = 10;
+
+CREATE VIEW v_loan_no_back AS
+SELECT l.*
+FROM loans l
+    LEFT JOIN backs b ON l.id=b.loan_id
+WHERE b.id is NULL;
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE penalties;
+TRUNCATE backs;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE backs;
+TRUNCATE loans;
+
+SET FOREIGN_KEY_CHECKS = 1;

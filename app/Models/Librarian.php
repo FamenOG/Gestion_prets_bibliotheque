@@ -34,15 +34,12 @@ class Librarian extends User
     {
         try {
             DB::beginTransaction();
+            $book = Library::where('id', $loan->book_id)->first();
+            $book->updateStatus(0);
             $timestamp = Carbon::now('Africa/Nairobi');
             $back_date = $timestamp;
             $back = new Back($this->id, $loan->id, $back_date);
-            $loan->save();
-            $book = Library::where('id', $loan->book_id)->first();
-
-            if ($book) {
-                $book->updateStatus(0);
-            }
+            $back->save();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
