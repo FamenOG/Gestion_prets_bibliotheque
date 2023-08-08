@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Book;
+use App\Models\User;
 
 class BookController extends Controller
 {
-    public function catalog(Category $category) {
+    public function catalog(Category $category,User $user)
+    {
         $data['role'] = $this->user->role_id;
         $data['books'] = $category->books;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
@@ -16,7 +18,8 @@ class BookController extends Controller
         return view('book.client.catalog')->with($data);
     }
 
-    public function details(Book $book) {
+    public function details(Book $book)
+    {
         return view('book.client.detail-book')->with('book', $book);
     }
 
@@ -25,13 +28,9 @@ class BookController extends Controller
         return view('book.client.library');
     }
 
-    public function formCreate() {
-        $categories = Category::all();
-        return view('book.create-book', compact('categories'));
-    }
-
     public function create(Request $request)
     {
+
         $request->validate([
             'title' => 'required|string',
             'author' => 'required|string',
@@ -44,12 +43,11 @@ class BookController extends Controller
         $fileName = time() . '_' . $file->getClientOriginalName();
         $file->move(public_path('img'), $fileName);
         try {
-            $book= new Book($request->title, $request->author, $request->publication_date, $request->ISBN, $fileName, $request->summary);
+            $book = new Book($request->title, $request->author, $request->publication_date, $request->ISBN, $fileName, $request->summary);
             $book->insert($request->input('category'));
             return redirect('/book-catalog/1');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
-    
 }

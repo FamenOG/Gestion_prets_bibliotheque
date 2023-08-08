@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory;
     protected $table = 'user';
+    protected $fillable = ['name', 'firstname', 'email', 'password', 'telephone', 'role_id', 'numero'];
 
 
     public function __construct(

@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Client;
 
 class UserController extends Controller
 {
 
-    public function __construct()
-    {
-    }
 
     public function signIn($role = 1)
     {
@@ -22,7 +20,6 @@ class UserController extends Controller
         }
         return view('user.sign-in')->with('role', $role);
     }
-
     public function createUser(Request $request, $role = 1)
     {
         $request->validate([
@@ -33,20 +30,14 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $lastAdherent = User::orderBy('id', 'desc')->first(); 
-
-        if ($lastAdherent) {
-            $lastAdherentNumber = intval(substr($lastAdherent->numero_adherent, 2)); 
-            $newAdherentNumber = $lastAdherentNumber + 1;
-        } else {
-            $newAdherentNumber = 1;
-        }
-
-        $numeroAdherent = 'AD' . $newAdherentNumber;
-        $user = new User($request->name, $request->firstname, $request->email, Hash::make($request->password), $request->telephone, $role,$numeroAdherent);
+        $user = new User($request->name, $request->firstname, $request->email, Hash::make($request->password), $request->telephone, $role);
         $user->save();
+        if($role==1){
+            $user->update(['numero' => "CL-".$user->id]);
+        }
         return redirect('/login')->with('role', $role);
     }
+    
 
 
     public function login()

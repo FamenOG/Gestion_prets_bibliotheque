@@ -31,7 +31,8 @@ Route::get('/detail-book/{book}', [BookController::class, "details"]);
 
 
 Route::get('/library', [BookController::class, "library"]);
-Route::get('/create-book', [BookController::class,"formCreate"]);
+Route::get('/create-book', [LibrarianController::class,"formCreate"]);
 Route::post('/create-book-traitement', [BookController::class,"create"]);
 
 Route::get('list-client', [LibrarianController::class, 'listClient']);
+Route::get('id', [ClientController::class, 'setIdUser']);

@@ -23,10 +23,10 @@
             <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
                 <div class="ms-3">
                     <h5>{{ $user->name }}</h5>
-                    ID number: 283081938
+                    ID number: {{ $user->numero }}
                 </div>
             </div>
-            <button class="float-end btn btn-dark my-2">Borrow</button>
+            <a href="/book-catalog/" class="float-end btn btn-dark my-2">Borrow</a>
             <button class="float-end btn btn-dark my-2">Back</button>
         </div> 
         @endforeach

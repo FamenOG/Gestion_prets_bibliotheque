@@ -9,4 +9,6 @@ class Client extends User
 {
     protected $table = 'v_client';
     use HasFactory;
+
 }
+
