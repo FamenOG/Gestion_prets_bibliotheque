@@ -11,12 +11,11 @@
     <title>Catalog</title>
 </head>
 <style>
-    
     ::-webkit-scrollbar {
         display: none;
     }
-
 </style>
+
 <body>
     <div class="container-fluid my-4 row">
         <div class="ms-3 col-md-10 ms-5 w-50 shadow p-4 mt-5" style="height: 500px;">
@@ -34,7 +33,10 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="/back-book/{{ $user->id }}/{{ $client->id }}/{{ $book->loan_id }}/{{ $book->id }}" class="float-end btn btn-dark">Back</a>
+                    <a href="{{ $user->role_id == 2 ? '/back-book/' . $user->id . '/' . $client->id . '/' . $book->loan_id . '/' . $book->id : '/detail-book/' . $book->id }}" class="float-end btn btn-dark">
+                        {{ $user->role_id == 2 ? 'Back' : 'Details' }}
+                    </a>
+
                 </div>
                 @endforeach
             </div>

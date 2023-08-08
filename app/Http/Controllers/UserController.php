@@ -12,7 +12,9 @@ use App\Models\Client;
 class UserController extends Controller
 {
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     public function signIn($role = 1)
     {
@@ -35,7 +37,7 @@ class UserController extends Controller
         $user->login($role);
         return redirect('/login')->with('role', $role);
     }
-    
+
 
 
     public function login()
@@ -60,7 +62,11 @@ class UserController extends Controller
             $user = Auth::user(); //? Instance de l'utilisateur authentifié
             \Session::put('user', $user);
             \Session::regenerate();
-            return redirect('/book-catalog/1');
+            if ($user->role_id == 2) {
+                return redirect('/list-client');
+            } else {
+                return redirect('/book-catalog/1');
+            }
         } else {
             return redirect('/login')->withErrors([
                 "error" => "Les informations de connexion sont invalides."
