@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class Book extends Model
 {

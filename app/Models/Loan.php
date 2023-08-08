@@ -24,9 +24,4 @@ class Loan extends Model
         $this->back_date = $back_date;
     }
 
-    public function book(): HasOne
-    {
-        return $this->hasOne(Book::class);
-    }
-
 }

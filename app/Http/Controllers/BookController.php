@@ -35,7 +35,9 @@ class BookController extends Controller
 
     public function library(Client $client)
     {
-        return view('book.client.library')->with('books', $client->loans);
+        $data['client'] = $client;
+        $data['books'] = $client->getBooks();
+        return view('book.client.library')->with($data);
     }
 
     public function create(Request $request)
