@@ -11,12 +11,11 @@
     <title>Catalog</title>
 </head>
 <style>
-    
     ::-webkit-scrollbar {
         display: none;
     }
-
 </style>
+
 <body>
     <div class="container-fluid my-4 row">
         <div class="ms-3 col-md-10 ms-5 w-50 shadow p-4 mt-5" style="height: 500px;">

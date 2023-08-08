@@ -17,7 +17,7 @@ class Librarian extends User
             DB::beginTransaction();
             $timestamp = Carbon::now('Africa/Nairobi');
             $loan_date = $timestamp;
-            $back_date = $timestamp->addDays(30);
+            $back_date = $timestamp->copy()->addDays(30);            
             $loan = new Loan($client->id, $this->id, $book->id, $loan_date, $back_date);
             $loan->save();
             $book->updateStatus(10);
