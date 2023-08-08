@@ -40,11 +40,11 @@ class LibrarianController extends Controller
         return redirect()->back();
     }
 
-    public function backBook(Librarian $librarian, Loan $loan,Book $book) {
-        $book = Book::find($book->id);
-        dd($book);
-        $librarian->back($loan,$book);
-        // return redirect()->back();
+    public function backBook(Librarian $librarian, Loan $loan) {
+        // $book = Book::find($book->id);
+        // dd($book);
+        $librarian->back($loan);
+        return redirect()->back();
     }
 
 }

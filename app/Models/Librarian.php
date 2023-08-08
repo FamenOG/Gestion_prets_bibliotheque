@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Library;
 
 class Librarian extends User
 {
@@ -29,17 +30,20 @@ class Librarian extends User
         }
     }
 
-    public function back(Loan $loan,Book $book)
+    public function back(Loan $loan)
     {
         try {
             DB::beginTransaction();
             $timestamp = Carbon::now('Africa/Nairobi');
             $back_date = $timestamp;
-            $loan = new Back($this->id, $loan->id, $back_date);
+            $back = new Back($this->id, $loan->id, $back_date);
             $loan->save();
-            dd($book = Book::find($book->id));
-            // $book->updateStatus(0);
-            // DB::commit();
+            $book = Library::where('id', $loan->book_id)->first();
+
+            if ($book) {
+                $book->updateStatus(0);
+            }
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             throw $e;

@@ -16,8 +16,8 @@
       color: #fff !important;
     }
   </style>
-  @if ($user->role_id == 1)
   <div class="d-flex float-end me-5 mt-3">
+    @if ($user->role_id == 1)
     <a href="">
       <div class="mx-4 position-relative">
         <img src="{{ URL::asset('img/notifications_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset="">
@@ -26,11 +26,11 @@
         </span>
       </div>
     </a>
+    @endif
     <a href="/library/{{ $user->id }}">
       <img src="{{ URL::asset('img/shopping_basket_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset="">
     </a>
   </div>
-  @endif
   <div class="container shadow rounded-pill mt-5 w-50">
     <header class="d-flex justify-content-center py-3 navbar navbar-expand-lg bg-body-tertiary">
       <ul class="nav nav-pills">
