@@ -35,6 +35,7 @@ class BookController extends Controller
 
     public function library(Client $client)
     {
+        $data['user'] = $this->user;
         $data['client'] = $client;
         $data['books'] = $client->getBooks();
         return view('book.client.library')->with($data);

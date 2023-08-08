@@ -68,5 +68,9 @@ class Book extends Model
         }
     }
 
+    public function setTable($table) {
+        $this->table = $table;
+    }
+
 }
 
