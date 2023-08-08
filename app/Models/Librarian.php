@@ -20,8 +20,7 @@ class Librarian extends User
             $back_date = $timestamp;
             $loan = new Loan($client->id, $this->id, $book->id, $loan_date, $back_date);
             $loan->save();
-            $book->setTable('books');
-            $book->update(['status' => 10]);
+            $book->updateStatus(10);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
@@ -36,8 +35,7 @@ class Librarian extends User
             $back_date = $timestamp;
             $loan = new Back($client->id, $this->id, $book->id,$loan->id,$back_date);
             $loan->save();
-            $book->setTable('books');
-            $book->update(['status' => 0]);
+            $book->updateStatus(0);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();

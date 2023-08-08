@@ -72,5 +72,10 @@ class Book extends Model
         $this->table = $table;
     }
 
+    public function updateStatus($status) {
+        $this->setTable('books');
+        $this->update(['status' => $status]);
+    }
+
 }
 
