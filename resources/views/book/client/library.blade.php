@@ -33,10 +33,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="{{ $user->role_id == 2 ? '/back-book/' . $user->id . '/' . $client->id . '/' . $book->loan_id . '/' . $book->id : '/detail-book/' . $book->id }}" class="float-end btn btn-dark">
-                        {{ $user->role_id == 2 ? 'Back' : 'Details' }}
-                    </a>
-
+                    <a href="/back-book/{{ $user->id }}/{{ $client->id }}/{{ $book->loan_id }}" class="float-end btn btn-dark">Back</a>
                 </div>
                 @endforeach
             </div>

@@ -37,6 +37,8 @@ class Librarian extends User
             $back_date = $timestamp;
             $loan = new Back($client->id, $this->id, $book->id, $loan->id, $back_date);
             $loan->save();
+            $book = new Book();
+            $book->id = $loan->book_id;
             $book->updateStatus(0);
             DB::commit();
         } catch (\Exception $e) {
