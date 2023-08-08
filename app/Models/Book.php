@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Book extends Model
 {
@@ -76,6 +77,21 @@ class Book extends Model
         // $this->setTable('books');
         $this->table = 'books';
         $this->update(['status' => $status]);
+    }
+
+    public function lost(Librarian $librarian, Client $client, Loan $loan) {
+        $back = new Back($client->id, $librarian->id, $loan->id, Carbon::now('Africa/Nairobi'));
+        $back->save();
+        $penality = new Penality();
+        $penality->back_id = $back->id;
+        $penality->type_id = 1;
+        $penality->librarian_id = $librarian->id;
+        // $datetime1 = new \DateTime($loan->loan_date);
+        // $datetime2 = new \DateTime($back->back_date);
+        // $interval = $datetime1->diff($datetime2);
+        // $days = $interval->format('%a');//now do whatever you like with $days
+        $penality->price = 30000;
+        $penality->save();    
     }
 
     

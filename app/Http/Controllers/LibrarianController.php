@@ -47,4 +47,9 @@ class LibrarianController extends Controller
         return redirect()->back();
     }
 
+    public function lostBook(Librarian $librarian, Client $client, Loan $loan) {
+        $book = new Book();
+        $book->lost($librarian, $client, $loan);
+    }
+
 }

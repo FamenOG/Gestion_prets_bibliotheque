@@ -36,3 +36,4 @@ Route::get('/create-book', [LibrarianController::class,"formCreate"]);
 Route::get('list-client', [LibrarianController::class, 'listClient']);
 Route::get('loan-book/{librarian}/{client}/{book}', [LibrarianController::class, 'loan']);
 Route::get('back-book/{librarian}/{loan}/{book}', [LibrarianController::class, 'backBook']);
+Route::get('lost-book/{librarian}/{client}/{loan}', [LibrarianController::class, 'lostBook']);

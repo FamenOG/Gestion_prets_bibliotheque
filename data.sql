@@ -6,6 +6,10 @@ INSERT INTO categories VALUES
     (1, 'Frisson'),
     (2, 'Drame');
 
+INSERT INTO types (name) VALUES
+    ('Lost'),
+    ('Late');
+
 INSERT INTO book_category VALUES
     (1, 1)
     (1, 2);
