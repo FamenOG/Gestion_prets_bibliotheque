@@ -22,11 +22,12 @@
         <div class="ms-3 col-md-10 ms-5 w-50 shadow p-4 mt-5" style="height: 500px;">
             <h2 class="text-center">Library</h2>
             <div class="overflow-auto h-75 scroll">
+                @foreach ($loans as $loan)
                 <div class="row p-3 rounded-3 my-5">
                     <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
                         <a href="http://"><img src="{{ URL::asset('img/Kolkata Chai Co _ The Best Chai in the Game.png') }}" class="rounded-3" style="width: 100px; height: 100px; object-fit: cover;"></a>
                         <div class="ms-3">
-                            <h5>Openning Night</h5>
+                            <h5>{{ $loan->book->title }}</h5>
                             <ul>
                                 <li>Date de d'emprunt: 10 septembre 2023</li>
                                 <li>Date de retour: 20 septembre 2023</li>
@@ -35,32 +36,7 @@
                     </div>
                     <button class="float-end btn btn-dark">Back</button>
                 </div>
-                <div class="row p-3 rounded-3 my-5">
-                    <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
-                        <a href="http://"><img src="{{ URL::asset('img/Kolkata Chai Co _ The Best Chai in the Game.png') }}" class="rounded-3" style="width: 100px; height: 100px; object-fit: cover;"></a>
-                        <div class="ms-3">
-                            <h5>Openning Night</h5>
-                            <ul>
-                                <li>Date de d'emprunt: 10 septembre 2023</li>
-                                <li>Date de retour: 20 septembre 2023</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button class="float-end btn btn-dark">Back</button>
-                </div>
-                <div class="row p-3 rounded-3 my-5">
-                    <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
-                        <a href="http://"><img src="{{ URL::asset('img/Kolkata Chai Co _ The Best Chai in the Game.png') }}" class="rounded-3" style="width: 100px; height: 100px; object-fit: cover;"></a>
-                        <div class="ms-3">
-                            <h5>Openning Night</h5>
-                            <ul>
-                                <li>Date de d'emprunt: 10 septembre 2023</li>
-                                <li>Date de retour: 20 septembre 2023</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button class="float-end btn btn-dark">Back</button>
-                </div>
+                @endforeach
             </div>
         </div>
 

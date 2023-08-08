@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Book;
 use App\Models\User;
+use App\Models\Client;
 
 class BookController extends Controller
 {
@@ -32,9 +33,9 @@ class BookController extends Controller
         return view('book.client.detail-book')->with('book', $book);
     }
 
-    public function library()
+    public function library(Client $client)
     {
-        return view('book.client.library');
+        return view('book.client.library')->with('books', $client->loans);
     }
 
     public function create(Request $request)

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Book;
 
 class Loan extends Model
 {
@@ -22,4 +23,10 @@ class Loan extends Model
         $this->loan_date = $loan_date;
         $this->back_date = $back_date;
     }
+
+    public function book(): HasOne
+    {
+        return $this->hasOne(Book::class);
+    }
+
 }

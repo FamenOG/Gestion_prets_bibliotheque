@@ -36,7 +36,7 @@ class LibrarianController extends Controller
     }
 
     public function loan(Librarian $librarian, Client $client, Book $book) {
-        $book->loan($librarian, $client);
+        $librarian->loan($client, $book);
         return redirect()->back();
     }
 }

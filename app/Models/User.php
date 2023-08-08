@@ -31,4 +31,11 @@ class User extends Authenticatable
         $this->telephone = $telephone;
         $this->numero = $numero;
     }
+
+    public function login($role) {
+        $this->save();
+        if($role==1) {
+            $this->update(['numero' => "CL-" . $this->id]);
+        }
+    }
 }

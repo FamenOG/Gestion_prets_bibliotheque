@@ -32,10 +32,7 @@ class UserController extends Controller
         ]);
 
         $user = new User($request->name, $request->firstname, $request->email, Hash::make($request->password), $request->telephone, $role);
-        $user->save();
-        if($role==1){
-            $user->update(['numero' => "CL-".$user->id]);
-        }
+        $user->login($role);
         return redirect('/login')->with('role', $role);
     }
     

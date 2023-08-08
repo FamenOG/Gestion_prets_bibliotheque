@@ -52,24 +52,6 @@ class Book extends Model
             throw $e;
         }
     }
-    
-    public function loan(Librarian $librarian, Client $client) {
-        try {
-            DB::beginTransaction();
-            $timestamp = Carbon::now('Africa/Nairobi');
-            $loan_date = $timestamp;
-            $timestamp->addDays(30);
-            $back_date = $timestamp;
-            $loan = new Loan($client->id, $librarian->id, $this->id, $loan_date, $back_date);
-            $loan->save();
-            $this->table = 'books';
-            $this->update(['status' => 10]);
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-            throw $e;
-        }
-    }
 
     public function getStatus() {
         switch ($this->status) {
