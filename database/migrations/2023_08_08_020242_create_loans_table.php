@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('librarian_id');
-            $table->dateTime('Loan date');
-            $table->foreign('client_id')->references('id')->on('v_client')->onDelete('cascade');
-            $table->foreign('librarian_id')->references('id')->on('v_librarian')->onDelete('cascade');
+            $table->unsignedBigInteger('book_id');
+            $table->dateTime('loan_date');
+            $table->dateTime('back_date');
+            $table->foreign('client_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('librarian_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->timestamps();
         });
     }

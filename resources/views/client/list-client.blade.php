@@ -26,7 +26,7 @@
                     ID number: {{ $user->numero }}
                 </div>
             </div>
-            <a href="/book-catalog/" class="float-end btn btn-dark my-2">Borrow</a>
+            <a href="/book-catalog/1?id={{ $user->id }}" class="float-end btn btn-dark my-2">Borrow</a>
             <button class="float-end btn btn-dark my-2">Back</button>
         </div> 
         @endforeach

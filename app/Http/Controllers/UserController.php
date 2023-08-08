@@ -12,6 +12,7 @@ use App\Models\Client;
 class UserController extends Controller
 {
 
+    public function __construct() {}
 
     public function signIn($role = 1)
     {

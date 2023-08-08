@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('ISBN')->unique();            
             $table->string('cover');  // Utiliser le type "string" pour le chemin vers le fichier de couverture du livre
             $table->text('summary'); // Utiliser le type "text" pour stocker un résumé plus long
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

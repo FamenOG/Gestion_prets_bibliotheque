@@ -9,7 +9,7 @@ use App\Models\User;
 
 class BookController extends Controller
 {
-    public function catalog(Request $request,Category $category,User $user)
+    public function catalog(Request $request, Category $category)
     {
         if($request->has('search')){
             $data['books']= Book::where('title', 'LIKE', "%{$request->search}%")
@@ -21,7 +21,7 @@ class BookController extends Controller
         else{
             $data['books'] = $category->books;
         }
-        $data['role'] = $this->user->role_id;
+        $data['user'] = $this->user;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
         $data['categories'] = Category::offset(6)->limit(10)->get();
         return view('book.client.catalog')->with($data);

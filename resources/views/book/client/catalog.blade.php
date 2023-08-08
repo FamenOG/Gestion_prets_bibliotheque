@@ -16,7 +16,7 @@
       color: #fff !important;
     }
   </style>
-  @if ($role == 1)
+  @if ($user->role_id == 1)
   <div class="d-flex float-end me-5 mt-3">
     <a href="">
       <div class="mx-4 position-relative">
@@ -36,7 +36,7 @@
       <ul class="nav nav-pills">
         @foreach ($limitedCategories as $category)
         <li class="nav-item">
-          <a href="/book-catalog/{{ $category->id }}" class="nav-link text-dark {{ Request::is('book-catalog/'.$category->id) ? 'active' : '' }}">
+          <a href="/book-catalog/{{ $category->id }}{{ Request::has('id') ? '?id=' . Request::get('id') : '' }}" class="nav-link text-dark {{ Request::is('book-catalog/'.$category->id) ? 'active' : '' }}">
             {{ $category->name }}
           </a>
         </li>
@@ -81,9 +81,10 @@
         <h4 class="card-title text-center">{{ $book->title }}</h4>
         <h6 class="card-text text-center">{{ $book->publication_date }}</h6>
         <h6 class="card-text text-center">{{ $book->author }}</h6>
+        <h6 class="card-text text-center">{{ $book->getStatus() }}</h6>
         <a href="/detail-book/{{ $book->id }}" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>
-        @if ($role == 2)
-        <a href="/detail-book" class=""><img src="{{ URL::asset('img/add_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>
+        @if ($user->role_id == 2)
+        <a href="/loan-book/{{ $user->id }}/{{ Request::get('id') }}/{{ $book->id }}" class=""><img src="{{ URL::asset('img/add_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>
         @endif
       </div>
     </div>

@@ -6,11 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Book extends Model
 {
-    protected $table='books';
+    protected $table = 'v_book_available';
     use HasFactory;
+
+    protected $fillable = [
+        'status',
+    ];
     
     public function __construct(
         $title = '',
@@ -34,6 +39,7 @@ class Book extends Model
 
     public function insert($categories) {
         try {
+            $this->table = 'books';
             DB::beginTransaction();
             $this->save();
             foreach ($categories as $category) {
@@ -44,6 +50,37 @@ class Book extends Model
         } catch (\Exception $e) {
             DB::rollback();
             throw $e;
+        }
+    }
+    
+    public function loan(Librarian $librarian, Client $client) {
+        try {
+            DB::beginTransaction();
+            $timestamp = Carbon::now('Africa/Nairobi');
+            $loan = new Loan($client->id, $librarian->id, $this->id, $timestamp, $timestamp->addDays(30));
+            $loan->save();
+            $this->table = 'books';
+            $this->update(['status' => 10]);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+    }
+
+    public function getStatus() {
+        switch ($this->status) {
+            case 10:
+                return 'Loaned';
+                break;
+            
+            case 0:
+                return 'Available';
+                break;
+            
+            case -10:
+                return 'Lost';
+                break;
         }
     }
 

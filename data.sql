@@ -20,3 +20,8 @@ CREATE VIEW v_librarian AS
 SELECT *
 FROM user
 WHERE role_id = 2;
+
+CREATE VIEW v_book_available AS 
+SELECT *
+FROM books
+WHERE status = 0;

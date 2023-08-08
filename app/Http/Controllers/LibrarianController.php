@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Category;
+use App\Models\Librarian;
+use App\Models\Book;
+use App\Models\Loan;
 
 class LibrarianController extends Controller
 {
@@ -30,5 +33,10 @@ class LibrarianController extends Controller
     {
         $categories = Category::all();
         return view('book.create-book', compact('categories'));
+    }
+
+    public function loan(Librarian $librarian, Client $client, Book $book) {
+        $book->loan($librarian, $client);
+        return redirect()->back();
     }
 }
