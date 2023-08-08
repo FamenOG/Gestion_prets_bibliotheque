@@ -37,7 +37,7 @@
               </a>
               <ul class="dropdown-menu">
                 @foreach ($categories as $category)
-                <li><a class="dropdown-item" href="/book-catalog/{{ $category->id }}">{{ $category->name }}</a></li>
+                <li><a class="dropdown-item" href="/book-catalog/{{ $category->id }}/{{ $user->id }}">{{ $category->name }}</a></li>
                 @endforeach
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Show all</a></li>
@@ -48,7 +48,7 @@
     </div>
     <div class="container justify-content-center d-flex mt-5">
       <form class="d-flex w-50">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-dark" type="submit">Search</button>
       </form>
     </div>

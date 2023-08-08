@@ -15,3 +15,8 @@ CREATE VIEW v_client AS
 SELECT *
 FROM user
 WHERE role_id = 1;
+
+CREATE VIEW v_librarian AS 
+SELECT *
+FROM user
+WHERE role_id = 2;

@@ -21,8 +21,9 @@ class LibrarianController extends Controller
     }
         
     public function listClient(Request $request) {
+        $categories= Category::all();
         $users = ($request->has('search')) ? Client::where('numero', 'LIKE', "%{$request->search}%")->get() : Client::all();
-        return view('client.list-client')->with('users', $users);
+        return view('client.list-client')->with(['users'=>$users,'categories'=>$categories]);
     }
 
     public function formCreate()

@@ -9,10 +9,19 @@ use App\Models\User;
 
 class BookController extends Controller
 {
-    public function catalog(Category $category,User $user)
+    public function catalog(Request $request,Category $category,User $user)
     {
+        if($request->has('search')){
+            $data['books']= Book::where('title', 'LIKE', "%{$request->search}%")
+            ->orWhere('author', 'LIKE', "%{$request->search}%")
+            ->orWhere('summary', 'LIKE', "%{$request->search}%")
+            ->orWhere('ISBN', 'LIKE', "%{$request->search}%")
+            ->get();
+        }
+        else{
+            $data['books'] = $category->books;
+        }
         $data['role'] = $this->user->role_id;
-        $data['books'] = $category->books;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
         $data['categories'] = Category::offset(6)->limit(10)->get();
         return view('book.client.catalog')->with($data);
