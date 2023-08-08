@@ -18,7 +18,7 @@
 
 <body>
     <div class="container-fluid my-4 row">
-        <div class="ms-3 col-md-10 ms-5 w-50 shadow p-4 mt-5" style="height: 500px;">
+        <div class="ms-3 col-md-10 ms-5 w-50 shadow p-4 mt-5" style="height: 600px;">
             <h2 class="text-center">Library</h2>
             <div class="overflow-auto h-75 scroll">
                 @foreach ($books as $book)
@@ -34,6 +34,7 @@
                         </div>
                     </div>
                     <a href="/back-book/{{ $user->id }}/{{ $book->loan_id }}" class="float-end btn btn-dark">Back</a>
+                    <a href="/lost-book/{{ $user->id }}/{{ $book->client_id }}/{{ $book->loan_id }}" class="mt-3 float-end btn btn-dark">Lost</a>
                 </div>
                 @endforeach
             </div>

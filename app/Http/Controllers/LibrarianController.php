@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Librarian;
 use App\Models\Book;
 use App\Models\Loan;
+use App\Models\Library;
 
 class LibrarianController extends Controller
 {
@@ -46,8 +47,9 @@ class LibrarianController extends Controller
     }
 
     public function lostBook(Librarian $librarian, Client $client, Loan $loan) {
-        $book = new Book();
+        $book = Library::where('id', $loan->book_id)->first();
         $book->lost($librarian, $client, $loan);
+        return redirect()->back();
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use App\Models\Penalty;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -74,26 +75,32 @@ class Book extends Model
     }
 
     public function updateStatus($status) {
-        // $this->setTable('books');
         $this->table = 'books';
         $this->update(['status' => $status]);
     }
-
+    
     public function lost(Librarian $librarian, Client $client, Loan $loan) {
-        $back = new Back($client->id, $librarian->id, $loan->id, Carbon::now('Africa/Nairobi'));
-        $back->save();
-        $penality = new Penality();
-        $penality->back_id = $back->id;
-        $penality->type_id = 1;
-        $penality->librarian_id = $librarian->id;
-        // $datetime1 = new \DateTime($loan->loan_date);
-        // $datetime2 = new \DateTime($back->back_date);
-        // $interval = $datetime1->diff($datetime2);
-        // $days = $interval->format('%a');//now do whatever you like with $days
-        $penality->price = 30000;
-        $penality->save();    
+        try {
+            DB::beginTransaction();
+            $this->updateStatus(-10);
+            $back = new Back($librarian->id, $loan->id, Carbon::now('Africa/Nairobi'));
+            $back->save();
+            $penality = new Penalty($back->id, 1, $librarian->id, 3000);
+            $penality->save();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+    }
+
+    public function getLate() {
+        $datetime1 = new \DateTime($loan->loan_date);
+        $datetime2 = new \DateTime($back->back_date);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+        return $days;
     }
 
     
 }
-
