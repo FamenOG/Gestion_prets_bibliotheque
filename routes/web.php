@@ -25,16 +25,14 @@ Route::get('/sign-in/{role}', [UserController::class, "signIn"]);
 Route::post('/create-client/{role}', [UserController::class, "createUser"]);
 Route::get('/log-out', [UserController::class, 'logOut']);
 
+Route::get('id', [ClientController::class, 'setIdUser']);
 
 Route::get('/book-catalog/{category}', [BookController::class, "catalog"]);
 Route::get('/detail-book/{book}', [BookController::class, "details"]);
-
-
 Route::get('/library/{client}', [BookController::class, "library"]);
-Route::get('/create-book', [LibrarianController::class,"formCreate"]);
 Route::post('/create-book-traitement', [BookController::class,"create"]);
 
+Route::get('/create-book', [LibrarianController::class,"formCreate"]);
 Route::get('list-client', [LibrarianController::class, 'listClient']);
 Route::get('loan-book/{librarian}/{client}/{book}', [LibrarianController::class, 'loan']);
-Route::get('id', [ClientController::class, 'setIdUser']);
 Route::get('/back-book/{client}/{loan}/{book}', [LibrarianController::class, 'back']);
