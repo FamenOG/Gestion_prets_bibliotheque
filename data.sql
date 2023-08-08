@@ -30,4 +30,5 @@ CREATE VIEW v_book_loaned AS
 SELECT b.*, l.loan_date, l.back_date, l.client_id, l.id as loan_id, c.name
 FROM loans l
     JOIN books b ON l.book_id=b.id
-    JOIN v_librarian c ON c.id=l.librarian_id;
+    JOIN v_librarian c ON c.id=l.librarian_id
+WHERE status = 10;

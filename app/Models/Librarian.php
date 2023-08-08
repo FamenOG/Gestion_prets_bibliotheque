@@ -28,13 +28,13 @@ class Librarian extends User
         }
     }
     
-    public function back(Client $client, Loan $loan ,Book $book) {
+    public function back(Client $client, Loan $loan) {
         try {
             DB::beginTransaction();
-            $timestamp = Carbon::now('Africa/Nairobi');
-            $back_date = $timestamp;
-            $loan = new Back($client->id, $this->id, $book->id,$loan->id,$back_date);
+            $loan = new Back($client->id, $this->id, $loan->id, Carbon::now('Africa/Nairobi'));
             $loan->save();
+            $book = new Book();
+            $book->id = $loan->book_id;
             $book->updateStatus(0);
             DB::commit();
         } catch (\Exception $e) {
