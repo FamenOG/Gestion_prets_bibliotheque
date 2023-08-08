@@ -29,18 +29,17 @@ class Librarian extends User
         }
     }
 
-    public function back(Client $client, Loan $loan, Book $book)
+    public function back(Loan $loan,Book $book)
     {
         try {
             DB::beginTransaction();
             $timestamp = Carbon::now('Africa/Nairobi');
             $back_date = $timestamp;
-            $loan = new Back($client->id, $this->id, $book->id, $loan->id, $back_date);
+            $loan = new Back($this->id, $loan->id, $back_date);
             $loan->save();
-            $book = new Book();
-            $book->id = $loan->book_id;
-            $book->updateStatus(0);
-            DB::commit();
+            dd($book = Book::find($book->id));
+            // $book->updateStatus(0);
+            // DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             throw $e;

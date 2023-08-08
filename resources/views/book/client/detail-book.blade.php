@@ -20,8 +20,8 @@
             <h2>{{ $book->title }}</h2>
             <p>{{ $book->summary }}</p>
             <div class="float-end">
-                <h5>Auteur: {{ $book->author }}</h5>
-                <h5>Date: {{ $book->publication_date }}</h5>
+                <h5>Author: {{ $book->author }}</h5>
+                <h5>Publication date: {{ $book->publication_date }}</h5>
                 <h5>ISBN: {{ $book->ISBN }}</h5>
             </div>
         </div>
