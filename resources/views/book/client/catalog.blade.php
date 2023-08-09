@@ -30,7 +30,7 @@
     <a href="{{($user->role_id==1) ?'/library'.'/'.$user->id : '/list-client'  }}">
       <img src="{{ URL::asset('img/shopping_basket_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset="">
     </a>
-  </div> 
+  </div>
   <div class="container shadow rounded-pill mt-5 w-50">
     <header class="d-flex justify-content-center py-3 navbar navbar-expand-lg bg-body-tertiary">
       <ul class="nav nav-pills">
@@ -42,7 +42,7 @@
         </li>
         @endforeach
         <li class="nav-item dropdown">
-          <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link text-dark dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Show more
           </a>
           <ul class="dropdown-menu">
@@ -57,7 +57,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item {{ Request::is('book-catalog') ? 'active' : '' }}" href="#">
+              <a class="dropdown-item {{ Request::is('book-catalog') ? 'active' : '' }}" href="/categories">
                 Show all
               </a>
             </li>

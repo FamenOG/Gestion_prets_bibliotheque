@@ -21,23 +21,38 @@ class BookController extends Controller
                 ->orWhereHas('author', function ($query) use ($request) {
                     $query->where('name', 'LIKE', "%{$request->search}%");
                 })
-                ->orderBy('title', 'asc') 
+                ->orderBy('title', 'asc')
                 // ->paginate(1)
                 ->get();
         } else {
-            $books = $category->books->sortBy('title'); 
+            $books = $category->books->sortBy('title');
         }
-    
-        $data['books'] = $books;        
+
+        $data['books'] = $books;
         $data['user'] = $this->user;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
         $data['categories'] = Category::offset(6)->limit(10)->get();
         return view('book.client.catalog')->with($data);
     }
-        public function details(Book $book)
+
+
+
+    public function details(Book $book)
     {
         return view('book.client.detail-book')->with('book', $book);
     }
+
+
+    public function showCategories()
+    {
+        $data['user'] = $this->user;
+        $categories = Category::query()->paginate(2);
+        $data['categories'] = $categories;
+
+        return view('book.categories', $data);
+    }
+
+
 
     public function library(Client $client)
     {
@@ -55,7 +70,7 @@ class BookController extends Controller
             'author' => 'required|string',
             'publication_date' => 'required|date',
             'ISBN' => 'required|numeric|unique:books|digits:13',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,gif', 
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif',
             'summary' => 'required|string',
         ]);
         $file = $request->file('cover');

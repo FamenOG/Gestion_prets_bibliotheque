@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    @if($user->role_id==2)
     <div class="container w-50 my-5 shadow p-5 rounded-3">
         <h1 class="text-center">New category</h1>
         <form action="/create-category" method="post" class="my-4" id="form" enctype="multipart/form-data">
@@ -23,10 +24,11 @@
             </div>
         </form>
     </div>
+    @endif
     <div class="container w-50 my-5 shadow p-5 rounded-3">
         <ul>
             @foreach($categories as $category)
-            <li>{{ $category->name }}</li>
+            <li><a href="/book-catalog/{{ $category->id}}">{{ $category->name }}</a> </li>
             @endforeach
         </ul>
     </div>

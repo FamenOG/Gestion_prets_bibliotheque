@@ -31,9 +31,9 @@ Route::get('/book-catalog/{category}', [BookController::class, "catalog"]);
 Route::get('/detail-book/{book}', [BookController::class, "details"]);
 Route::get('/library/{client}', [BookController::class, "library"]);
 Route::post('/create-book-traitement', [BookController::class,"create"]);
+Route::get('/categories', [BookController::class, 'showCategories']);
 
 Route::get('/create-book', [LibrarianController::class,"bookFormCreate"]);
-Route::get('/categories', [LibrarianController::class, 'showCategories']);
 Route::post('/create-category', [LibrarianController::class, 'createCategory']);
 
 Route::get('list-client', [LibrarianController::class, 'listClient']);

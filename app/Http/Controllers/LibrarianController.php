@@ -49,12 +49,7 @@ class LibrarianController extends Controller
         $category->save();
         return redirect('/categories');
     }
-    public function showCategories()
-    {
-        $categories = Category::query()->paginate(2);
 
-        return view('book.categories', compact('categories'));
-    }
 
     public function loan(Librarian $librarian, Client $client, Book $book) {
         $librarian->loan($client, $book);
