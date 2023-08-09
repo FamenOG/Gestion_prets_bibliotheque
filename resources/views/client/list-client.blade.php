@@ -18,6 +18,11 @@
                 <input class="form-control me-2" name="search" type="search" placeholder="ID number" aria-label="Search">
                 <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
+            <!-- <div class="mx-20 position-relative">
+                <a href="/list-client">
+                    <img src="{{ URL::asset('img/shopping_basket_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset="">
+                </a>
+            </div> -->
         </div>
         @foreach ($users as $user)
         <div class="row shadow-sm p-3 rounded-3 my-5">

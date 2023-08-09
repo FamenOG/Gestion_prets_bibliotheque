@@ -28,12 +28,13 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string',
             'firstname' => 'required|string',
+            'gender' => 'required|string',
             'email' => 'required|email|unique:user',
             'telephone' => 'required|numeric|unique:user|digits:10',
             'password' => 'required',
         ]);
 
-        $user = new User($request->name, $request->firstname, $request->email, Hash::make($request->password), $request->telephone, $role);
+        $user = new User($request->name, $request->firstname,$request->gender, $request->email, Hash::make($request->password), $request->telephone, $role);
         $user->login($role);
         return redirect('/login')->with('role', $role);
     }

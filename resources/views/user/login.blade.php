@@ -25,7 +25,7 @@
                 <div class="input">
                     <input type="submit" value="Ok" class="btn dark">
                 </div>
-                <h3 class="account"><a href="/sign-in/1">S'inscrire</a></h3>
+                <h3 class="account"><a href="/sign-in/1">Sign in</a></h3>
             </form>
             <ul>
                 @foreach($errors->all() as $error)

@@ -18,14 +18,24 @@
             @csrf
             <div class="row">
                 <div class="col mb-3">
-                    <label class="form-label">Nom</label>
+                    <label class="form-label">Name</label>
                     <input type="text" class="form-control" data-parsley-required="true" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="col mb-3">
-                    <label class="form-label">Prenom</label>
+                    <label class="form-label">Firstname</label>
                     <input type="text" class="form-control" data-parsley-required="true" name="firstname" value="{{ old('firstname') }}">
                 </div>
             </div>
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <div>
+                    <input type="radio" class="form-check-input" data-parsley-required="true" name="gender" value="Male">
+                    <label class="form-check-label">Male</label>
+                    <input type="radio" class="form-check-input" data-parsley-required="true" name="gender" value="Female">
+                    <label class="form-check-label">Female</label>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Email</label>
                 <input type="email" class="form-control" data-parsley-required="true" name="email" value="{{ old('email') }}">
@@ -38,7 +48,7 @@
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" data-parsley-required="true" name="password">
             </div>
-            <button type="submit" class="btn btn-success">S'inscrire</button>
+            <button type="submit" class="btn btn-success">Sign in</button>
         </form>
         <ul>
             @foreach($errors->all() as $error)

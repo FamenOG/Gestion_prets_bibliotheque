@@ -17,6 +17,7 @@ class User extends Authenticatable
     public function __construct(
         $name = '',
         $firstname = '',
+        $gender = '',
         $email = '',
         $password = '',
         $telephone = '',
@@ -26,6 +27,7 @@ class User extends Authenticatable
         $this->role_id = $role_id;
         $this->name = $name;
         $this->firstname = $firstname;
+        $this->gender = $gender;
         $this->email = $email;
         $this->password = $password;
         $this->telephone = $telephone;
