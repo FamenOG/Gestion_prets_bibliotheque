@@ -27,7 +27,7 @@
                 </div>
             </div>
             <a href="/book-catalog/1?id={{ $user->id }}" class="float-end btn btn-dark my-2">Borrow</a>
-            <a href="/library/{{ $user->id }}" class="float-end btn btn-dark my-2">Back</a>
+            <a href="/library/{{ $user->id }}" class="float-end btn btn-dark my-2">Give back</a>
         </div> 
         @endforeach
     </div>

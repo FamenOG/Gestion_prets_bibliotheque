@@ -37,11 +37,18 @@ class Librarian extends User
             $book = Library::where('id', $loan->book_id)->first();
             $book->updateStatus(0);
             $back = new Back($this->id, $loan->id, Carbon::now('Africa/Nairobi'));
-            $back->save();
+            // $back->save();
+            $daysLate = $book->getLate($loan, $back);
+            dd($daysLate);
+            // if ($daysLate < 0){
+            //     $penaltyAmount = 5000 * -($daysLate);
+            //     $penalty = new Penalty($back->id, 1, $this->id, $penaltyAmount);
+            //     $penalty->save();
+            // }
             DB::commit();
         } catch (\Exception $e) {
-            DB::rollback();
-            throw $e;
-        }
+                DB::rollback();
+                throw $e;
+            }
     }
 }

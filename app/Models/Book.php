@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
-use App\Models\Penalty;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+
 
 class Book extends Model
 {
@@ -17,7 +17,7 @@ class Book extends Model
     protected $fillable = [
         'status',
     ];
-    
+
     public function __construct(
         $title = '',
         $author = '',
@@ -33,12 +33,14 @@ class Book extends Model
         $this->cover = $cover;
         $this->summary = $summary;
     }
-    
-    public function categories() {
+
+    public function categories()
+    {
         return $this->belongsToMany(Category::class);
     }
 
-    public function insert($categories) {
+    public function insert($categories)
+    {
         try {
             $this->table = 'books';
             DB::beginTransaction();
@@ -54,32 +56,36 @@ class Book extends Model
         }
     }
 
-    public function getStatus() {
+    public function getStatus()
+    {
         switch ($this->status) {
             case 10:
                 return 'Loaned';
                 break;
-            
+
             case 0:
                 return 'Available';
                 break;
-            
+
             case -10:
                 return 'Lost';
                 break;
         }
     }
 
-    public function setTable($table) {
+    public function setTable($table)
+    {
         $this->table = $table;
     }
 
-    public function updateStatus($status) {
+    public function updateStatus($status)
+    {
         $this->table = 'books';
         $this->update(['status' => $status]);
     }
-    
-    public function lost(Librarian $librarian, Client $client, Loan $loan) {
+
+    public function lost(Librarian $librarian,Loan $loan)
+    {
         try {
             DB::beginTransaction();
             $this->updateStatus(-10);
@@ -94,13 +100,12 @@ class Book extends Model
         }
     }
 
-    public function getLate() {
-        $datetime1 = new \DateTime($loan->loan_date);
+    public function getLate(Loan $loan, Back $back)
+    {
+        $datetime1 = new \DateTime($loan->back_date);
         $datetime2 = new \DateTime($back->back_date);
         $interval = $datetime1->diff($datetime2);
         $days = $interval->format('%a');
         return $days;
     }
-
-    
 }

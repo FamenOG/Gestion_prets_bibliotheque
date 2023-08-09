@@ -46,9 +46,9 @@ class LibrarianController extends Controller
         return redirect()->back();
     }
 
-    public function lostBook(Librarian $librarian, Client $client, Loan $loan) {
+    public function lostBook(Librarian $librarian,Loan $loan) {
         $book = Library::where('id', $loan->book_id)->first();
-        $book->lost($librarian, $client, $loan);
+        $book->lost($librarian,$loan);
         return redirect()->back();
     }
 

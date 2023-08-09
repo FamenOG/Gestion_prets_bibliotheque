@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <a href="/back-book/{{ $user->id }}/{{ $book->loan_id }}" class="float-end btn btn-dark">Back</a>
-                    <a href="/lost-book/{{ $user->id }}/{{ $book->client_id }}/{{ $book->loan_id }}" class="mt-3 float-end btn btn-dark">Lost</a>
+                    <a href="/lost-book/{{ $user->id }}/{{ $book->loan_id }}" class="mt-3 float-end btn btn-dark">Lost</a>
                 </div>
                 @endforeach
             </div>
