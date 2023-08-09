@@ -29,6 +29,8 @@ class LibrarianController extends Controller
         $perPage = 1;
         $usersQuery = ($request->has('search'))
             ? Client::where('numero', 'LIKE', "%{$request->search}%")
+                    ->orWhere('name', 'LIKE', "%{$request->search}%")
+                    ->orWhere('firstname', 'LIKE', "%{$request->search}%")
             : Client::query();
     
         $users = $usersQuery->paginate($perPage);
