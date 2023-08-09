@@ -11,10 +11,12 @@ use Exception;
 class Category extends Model
 {
     use HasFactory;
-    protected $table = 'categories'; // Corrected the table name definition
+    protected $table = 'categories'; 
+    protected $fillable=['name'];
 
-    public function __construct($id = '') {
-        $this->id = $id;
+
+    public function __construct($name = '') {
+        $this->name = $name;
     }
 
     public function books() {

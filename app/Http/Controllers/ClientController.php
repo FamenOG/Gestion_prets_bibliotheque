@@ -8,12 +8,5 @@ use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware(function ($request, $next) {
-    //         $this->user->numero = 'CL-' . $this->user->id;
-    //         $this->user->update();
-    //         return $next($request);
-    //     });
-    // }
+    protected $table='v_client';
 }

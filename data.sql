@@ -1,6 +1,5 @@
 INSERT INTO role VALUES (1, 'Client'), (2, 'Librarian');
 
-INSERT INTO categories VALUES (1, 'Thriller'), (2, 'Drame'),(3,'Basket'),(4,'Sci-Fi'),(5,'Cooking');
 
 INSERT INTO types (name) VALUES ('Lost'), ('Late');
 

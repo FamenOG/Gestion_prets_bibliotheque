@@ -60,16 +60,16 @@
             @endforeach
         </ul>
     </div>
+    <script type="text/javascript" src="{{ URL::asset('bootstrap/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('aos/dist/aos.js') }}"></script>
+    <script>
+        $('#form').parsley();
+        AOS.init({
+            duration: 1000,
+            once: false,
+            easing: 'ease-in-out'
+        });
+    </script>
 </body>
-<script type="text/javascript" src="{{ URL::asset('bootstrap/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('aos/dist/aos.js') }}"></script>
-<script>
-    $('#form').parsley();
-    AOS.init({
-        duration: 1000,
-        once: false,
-        easing: 'ease-in-out'
-    });
-</script>
 
 </html>

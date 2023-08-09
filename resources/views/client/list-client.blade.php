@@ -43,12 +43,12 @@
             }
         </style>
         <div class="d-flex justify-content-center">
-            {{ $users->links() }} <!-- Ajoute la pagination en bas de la liste -->
+            {{ $users->links() }} 
         </div>
 
 
     </div>
+    <script type="text/javascript" src="{{ URL::asset('bootstrap/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>
 </body>
-<script type="text/javascript" src="{{ URL::asset('bootstrap/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>
 
 </html>
