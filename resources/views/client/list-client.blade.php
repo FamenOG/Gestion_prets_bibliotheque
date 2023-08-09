@@ -11,6 +11,7 @@
 
 <body>
     <div class="container">
+        
         <h2 class="text-center mt-5">Customer list</h2>
         <div class="container justify-content-center d-flex mt-5">
             <form action="/list-client" class="d-flex w-50">

@@ -32,7 +32,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">ISBN</label>
-                <input type="number" maxlength="13" class="form-control" data-parsley-required="true" name="ISBN" value="{{ old('ISBN') }}">
+                <input type="number" placeholder="*************" maxlength="13" class="form-control" data-parsley-required="true" name="ISBN" value="{{ old('ISBN') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Cover</label>

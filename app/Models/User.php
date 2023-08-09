@@ -35,7 +35,10 @@ class User extends Authenticatable
     public function login($role) {
         $this->save();
         if($role==1) {
-            $this->update(['numero' => "CL-" . $this->id]);
+            $this->update(['numero' => "CLI-" . $this->id]);
+        }
+        else{
+            $this->update(['numero' => "LIB-" . $this->id]);
         }
     }
 }
