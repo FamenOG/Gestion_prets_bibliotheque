@@ -20,14 +20,14 @@ class Book extends Model
 
     public function __construct(
         $title = '',
-        $author = '',
+        $author_id = '',
         $publication_date = '',
         $isbn = '',
         $cover = '',
         $summary = ''
     ) {
         $this->title = $title;
-        $this->author = $author;
+        $this->author_id = $author_id;
         $this->publication_date = $publication_date;
         $this->isbn = $isbn;
         $this->cover = $cover;
@@ -38,8 +38,11 @@ class Book extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+    public function author(){
+        $this->belongsTo(Author::class);
+    }
 
-    public function insert($categories)
+    public function insertWith($categories)
     {
         try {
             $this->table = 'books';

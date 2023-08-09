@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('author');
+            $table->unsignedBigInteger('author_id');
             $table->date('publication_date')->nullable();
-            $table->string('ISBN')->unique();            
+            $table->string('ISBN')->unique();
             $table->string('cover');  // Utiliser le type "string" pour le chemin vers le fichier de couverture du livre
-            $table->text('summary'); // Utiliser le type "text" pour stocker un résumé plus long
+            $table->text('summary');  // Utiliser le type "text" pour stocker un résumé plus long
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

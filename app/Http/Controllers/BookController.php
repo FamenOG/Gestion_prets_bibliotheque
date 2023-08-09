@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Book;
 use App\Models\User;
+use App\Models\Author;
 use App\Models\Client;
 
 class BookController extends Controller
@@ -49,15 +50,17 @@ class BookController extends Controller
             'author' => 'required|string',
             'publication_date' => 'required|date',
             'ISBN' => 'required|numeric|unique:books|digits:13',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,gif', // Change the 'image' to 'file' if you want to allow any file type.
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif', 
             'summary' => 'required|string',
         ]);
         $file = $request->file('cover');
         $fileName = time() . '_' . $file->getClientOriginalName();
         $file->move(public_path('img'), $fileName);
         try {
-            $book = new Book($request->title, $request->author, $request->publication_date, $request->ISBN, $fileName, $request->summary);
-            $book->insert($request->input('category'));
+            $author = Author::firstOrCreate(['name' => $request->author]);
+            $book = new Book($request->title, $author->id, $request->publication_date, $request->ISBN, $fileName, $request->summary);
+            // dd($author->id);
+            $book->insertWith($request->input('category'));
             return redirect('/book-catalog/1');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
