@@ -13,28 +13,28 @@ class BookController extends Controller
 {
     public function catalog(Request $request, Category $category)
     {
-        if($request->has('search')){
-            $books= Book::where('title', 'LIKE', "%{$request->search}%")
-            ->orWhere('summary', 'LIKE', "%{$request->search}%")
-            ->orWhere('ISBN', 'LIKE', "%{$request->search}%")
-            ->orWhereHas('author', function ($query) use ($request) {
-                $query->where('name', 'LIKE', "%{$request->search}%");
-            })
-            ->get();
-        
+        if ($request->has('search')) {
+            $books = Book::query()
+                ->where('title', 'LIKE', "%{$request->search}%")
+                ->orWhere('summary', 'LIKE', "%{$request->search}%")
+                ->orWhere('ISBN', 'LIKE', "%{$request->search}%")
+                ->orWhereHas('author', function ($query) use ($request) {
+                    $query->where('name', 'LIKE', "%{$request->search}%");
+                })
+                ->orderBy('title', 'asc') 
+                // ->paginate(1)
+                ->get();
+        } else {
+            $books = $category->books->sortBy('title'); 
         }
-        else{
-            $books=$category->books;            // dd($data['author'] = $author->books);
-        }
-
-        $data['books']=$books;        
+    
+        $data['books'] = $books;        
         $data['user'] = $this->user;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
         $data['categories'] = Category::offset(6)->limit(10)->get();
         return view('book.client.catalog')->with($data);
     }
-
-    public function details(Book $book)
+        public function details(Book $book)
     {
         return view('book.client.detail-book')->with('book', $book);
     }

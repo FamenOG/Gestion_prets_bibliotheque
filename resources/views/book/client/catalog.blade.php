@@ -27,7 +27,7 @@
       </div>
     </a>
     @endif
-    <a href="/library/{{ $user->id }}">
+    <a href="/list-client">
       <img src="{{ URL::asset('img/shopping_basket_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset="">
     </a>
   </div>
@@ -83,8 +83,8 @@
         <h6 class="card-text text-center">{{ $book->author->name }}</h6>
         <h6 class="card-text text-center">{{ $book->getStatus() }}</h6>
         <a href="/detail-book/{{ $book->id }}" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>
-        @if ($user->role_id == 2)
-        <a href="{{ Request::has('id') ?'/loan-book/' . $user->id .'/'. Request::get('id') .'/'. $book->id  : '/list-client'}}" class=""><img src="{{ URL::asset('img/add_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>
+        @if ($user->role_id == 2 && Request::has('id') )
+        <a href="{{ '/loan-book/' . $user->id .'/'. Request::get('id') .'/'. $book->id  }}" class=""><img src="{{ URL::asset('img/add_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>
         @endif
       </div>
     </div>
