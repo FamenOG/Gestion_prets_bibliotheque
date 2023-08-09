@@ -21,9 +21,5 @@ class Category extends Model
         return $this->belongsToMany(Book::class);
     }
 
-    public function assign(Book $book) {
-        DB::insert('INSERT INTO book_category (book_id, category_id) VALUES (?, ?)', [$book->id, $this->id]);
-    }
-
 }
 

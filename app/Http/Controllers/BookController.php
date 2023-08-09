@@ -14,15 +14,21 @@ class BookController extends Controller
     public function catalog(Request $request, Category $category)
     {
         if($request->has('search')){
-            $data['books']= Book::where('title', 'LIKE', "%{$request->search}%")
-            ->orWhere('author', 'LIKE', "%{$request->search}%")
+            $data['books'] = Book::where('title', 'LIKE', "%{$request->search}%")
             ->orWhere('summary', 'LIKE', "%{$request->search}%")
             ->orWhere('ISBN', 'LIKE', "%{$request->search}%")
+            ->orWhereHas('author', function ($query) use ($request) {
+                $query->where('name', 'LIKE', "%{$request->search}%");
+            })
             ->get();
+        
         }
         else{
-            $data['books'] = $category->books;
+            $data['books']=$category->books;
+            // $author= Author::find(6);
+            // dd($data['author'] = $author->books);
         }
+
         $data['user'] = $this->user;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
         $data['categories'] = Category::offset(6)->limit(10)->get();
@@ -60,10 +66,13 @@ class BookController extends Controller
             $author = Author::firstOrCreate(['name' => $request->author]);
             $book = new Book($request->title, $author->id, $request->publication_date, $request->ISBN, $fileName, $request->summary);
             // dd($author->id);
-            $book->insertWith($request->input('category'));
+            $book->save();
+
+            $book->categories()->attach($request->input('category'));
             return redirect('/book-catalog/1');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            dd($e);
+            // return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }

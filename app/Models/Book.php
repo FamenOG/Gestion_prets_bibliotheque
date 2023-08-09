@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use App\Models\Author;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -38,26 +39,11 @@ class Book extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+    
     public function author(){
-        $this->belongsTo(Author::class);
+        return $this->belongsTo(Author::class);
     }
 
-    public function insertWith($categories)
-    {
-        try {
-            $this->table = 'books';
-            DB::beginTransaction();
-            $this->save();
-            foreach ($categories as $category) {
-                $category = new Category($category);
-                $category->assign($this);
-            }
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-            throw $e;
-        }
-    }
 
     public function getStatus()
     {
