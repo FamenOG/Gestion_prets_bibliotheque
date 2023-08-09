@@ -26,7 +26,7 @@ class LibrarianController extends Controller
         
     public function listClient(Request $request) {
         $categories = Category::all();
-        $perPage = 2;
+        $perPage = 1;
         $usersQuery = ($request->has('search'))
             ? Client::where('numero', 'LIKE', "%{$request->search}%")
             : Client::query();

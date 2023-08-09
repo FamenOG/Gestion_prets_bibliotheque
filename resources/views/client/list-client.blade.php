@@ -11,14 +11,14 @@
 
 <body>
     <div class="container">
-        
+
         <h2 class="text-center mt-5">Customer list</h2>
         <div class="container justify-content-center d-flex mt-5">
             <form action="/list-client" class="d-flex w-50">
-              <input class="form-control me-2" name="search" type="search" placeholder="ID number" aria-label="Search">
-              <button class="btn btn-outline-dark" type="submit">Search</button>
+                <input class="form-control me-2" name="search" type="search" placeholder="ID number" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
-          </div>
+        </div>
         @foreach ($users as $user)
         <div class="row shadow-sm p-3 rounded-3 my-5">
             <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
@@ -29,8 +29,19 @@
             </div>
             <a href="/book-catalog/1?id={{ $user->id }}" class="float-end btn btn-dark my-2">Borrow</a>
             <a href="/library/{{ $user->id }}" class="float-end btn btn-dark my-2">Give back</a>
-        </div> 
+        </div>
         @endforeach
+        <style>
+            .pagination .page-link {
+                background-color: #343a40 !important;
+                color: #fff !important;
+            }
+        </style>
+        <div class="d-flex justify-content-center">
+            {{ $users->links() }} <!-- Ajoute la pagination en bas de la liste -->
+        </div>
+
+
     </div>
 </body>
 <script type="text/javascript" src="{{ URL::asset('bootstrap/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>
