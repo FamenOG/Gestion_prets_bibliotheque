@@ -80,7 +80,7 @@
       <div class="card-body">
         <h4 class="card-title text-center">{{ $book->title }}</h4>
         <h6 class="card-text text-center">{{ $book->publication_date }}</h6>
-        <h6 class="card-text text-center">{{ $book->author_id }}</h6>
+        <h6 class="card-text text-center">{{ $book->author->name }}</h6>
         <h6 class="card-text text-center">{{ $book->getStatus() }}</h6>
         <a href="/detail-book/{{ $book->id }}" class=""><img src="{{ URL::asset('img/open_in_new_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset=""></a>
         @if ($user->role_id == 2)

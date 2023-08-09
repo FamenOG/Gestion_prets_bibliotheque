@@ -14,7 +14,7 @@ class BookController extends Controller
     public function catalog(Request $request, Category $category)
     {
         if($request->has('search')){
-            $data['books'] = Book::where('title', 'LIKE', "%{$request->search}%")
+            $books= Book::where('title', 'LIKE', "%{$request->search}%")
             ->orWhere('summary', 'LIKE', "%{$request->search}%")
             ->orWhere('ISBN', 'LIKE', "%{$request->search}%")
             ->orWhereHas('author', function ($query) use ($request) {
@@ -24,11 +24,10 @@ class BookController extends Controller
         
         }
         else{
-            $data['books']=$category->books;
-            // $author= Author::find(6);
-            // dd($data['author'] = $author->books);
+            $books=$category->books;            // dd($data['author'] = $author->books);
         }
 
+        $data['books']=$books;        
         $data['user'] = $this->user;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
         $data['categories'] = Category::offset(6)->limit(10)->get();
