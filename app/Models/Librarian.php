@@ -39,17 +39,16 @@ class Librarian extends User
             $back = new Back($this->id, $loan->id, Carbon::now('Africa/Nairobi'));
             $back->save();
             $daysLate = $book->getLate($loan, $back);
-            // $daysLate = -2;
-            // dd($daysLate);
-            if ($loan->back_date < $back->back_date ){
+
+            if ($loan->back_date < $back->back_date) {
                 $penaltyAmount = 5000 * $daysLate;
                 $penalty = new Penalty($back->id, 1, $this->id, $penaltyAmount);
                 $penalty->save();
             }
             DB::commit();
         } catch (\Exception $e) {
-                DB::rollback();
-                throw $e;
-            }
+            DB::rollback();
+            throw $e;
+        }
     }
 }

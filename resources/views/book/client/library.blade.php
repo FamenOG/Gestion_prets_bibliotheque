@@ -28,8 +28,8 @@
                         <div class="ms-3">
                             <h5>{{ $book->title }}</h5>
                             <ul>
-                                <li>Date d'emprunt: {{ $book->loan_date }}</li>
-                                <li>Date de retour: {{ $book->back_date }}</li>
+                                <li><u>Loan date</u> : {{ $book->loan_date }}</li>
+                                <li><u>Due date</u> : {{ $book->back_date }}</li>
                             </ul>
                         </div>
                     </div>
