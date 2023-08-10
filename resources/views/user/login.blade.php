@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{{ URL::asset('bootstrap/bootstrap-5.0.2/css/bootstrap.min.css') }}"> -->
     <link rel="stylesheet" href="{{ URL::asset("/assets/css/login.css") }}">
     <title>Login</title>
 </head>
@@ -26,12 +27,13 @@
                     <input type="submit" value="Ok" class="btn dark">
                 </div>
                 <h3 class="account"><a href="/sign-in/1">Sign in</a></h3>
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <div class="alert alert-danger">{{$error}}</div>
+                    @endforeach
+                </ul>
             </form>
-            <ul>
-                @foreach($errors->all() as $error)
-                <li class="alert alert-danger">{{$error}}</li>
-                @endforeach
-            </ul>
+
         </div>
 
         <div class="bg-gradient">

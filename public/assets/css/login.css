@@ -4,7 +4,7 @@
     font-weight: normal;
     font-style: normal;
 }
-  
+
 
 * {
     margin: 0;
@@ -98,5 +98,16 @@ img {
 }
 
 .account a {
+    width: 50%;
+    display: flex;
+    justify-content: center;
     color: #000000;
+}
+
+.alert {
+    margin-top: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    color: red;
 }

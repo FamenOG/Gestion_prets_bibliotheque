@@ -34,7 +34,7 @@ class User extends Authenticatable
         $this->numero = $numero;
     }
 
-    public function login($role) {
+    public function giveID($role) {
         $this->save();
         if($role==1) {
             $this->update(['numero' => "CLI-" . $this->id]);

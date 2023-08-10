@@ -35,7 +35,7 @@ class UserController extends Controller
         ]);
 
         $user = new User($request->name, $request->firstname,$request->gender, $request->email, Hash::make($request->password), $request->telephone, $role);
-        $user->login($role);
+        $user->giveID($role);
         return redirect('/login')->with('role', $role);
     }
 
@@ -70,7 +70,7 @@ class UserController extends Controller
             }
         } else {
             return redirect('/login')->withErrors([
-                "error" => "Les informations de connexion sont invalides."
+                "error" => "The login informations are invalid."
             ]);
         }
     }
