@@ -18,7 +18,7 @@
   </style>
   <div class="d-flex float-end me-5 mt-3">
     @if ($user->role_id == 1)
-    <a href="">
+    <a href="/notifications">
       <div class="mx-4 position-relative">
         <img src="{{ URL::asset('img/notifications_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset="">
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

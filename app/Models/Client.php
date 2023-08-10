@@ -22,5 +22,6 @@ class Client extends User
         return DB::table('v_book_loaned')->where('client_id', $this->id)->get();
     }
 
+    
 }
 

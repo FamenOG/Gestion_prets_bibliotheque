@@ -46,7 +46,6 @@ class LibrarianController extends Controller
     }
     public function createCategory(Request $request)
     {
-        // dd($request->name);
         $category = new Category($request->name);
         $category->save();
         return redirect('/categories');

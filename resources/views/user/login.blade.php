@@ -27,7 +27,7 @@
                     <input type="submit" value="Ok" class="btn dark">
                 </div>
                 <h3 class="account"><a href="/sign-in/1">Sign in</a></h3>
-                <ul>
+                <ul class="error">
                     @foreach($errors->all() as $error)
                     <div class="alert alert-danger">{{$error}}</div>
                     @endforeach

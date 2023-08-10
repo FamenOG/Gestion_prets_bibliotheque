@@ -42,7 +42,7 @@ class Librarian extends User
 
             if ($loan->back_date < $back->back_date) {
                 $penaltyAmount = 5000 * $daysLate;
-                $penalty = new Penalty($back->id, 1, $this->id, $penaltyAmount);
+                $penalty = new Penalty($back->id, 2, $this->id, $penaltyAmount);
                 $penalty->save();
             }
             DB::commit();

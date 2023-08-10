@@ -25,7 +25,7 @@ Route::get('/sign-in/{role}', [UserController::class, "signIn"]);
 Route::post('/create-client/{role}', [UserController::class, "createUser"]);
 Route::get('/log-out', [UserController::class, 'logOut']);
 
-Route::get('id', [ClientController::class, 'setIdUser']);
+Route::get('/notifications', [ClientController::class, 'notify']);
 
 Route::get('/book-catalog/{category}', [BookController::class, "catalog"]);
 Route::get('/detail-book/{book}', [BookController::class, "details"]);

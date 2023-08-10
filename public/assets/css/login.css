@@ -103,11 +103,17 @@ img {
     justify-content: center;
     color: #000000;
 }
+.error{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .alert {
+    width: 50%;
     margin-top: 30px;
     font-size: 20px;
     display: flex;
     justify-content: center;
-    color: red;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
 }
