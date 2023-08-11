@@ -8,7 +8,7 @@
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/parsley.min.js') }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of books</title>
+    <title>Details</title>
 </head>
 
 <body>

@@ -37,13 +37,15 @@
         </div>
         @endforeach
         <style>
-            .pagination .page-link {
+            <style>.pagination .page-item.active .page-link {
                 background-color: #343a40 !important;
                 color: #fff !important;
             }
         </style>
+
+        </style>
         <div class="d-flex justify-content-center">
-            {{ $users->links() }} 
+            {{ $users->links() }}
         </div>
 
 

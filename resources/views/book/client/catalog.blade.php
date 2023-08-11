@@ -22,7 +22,7 @@
       <div class="mx-4 position-relative">
         <img src="{{ URL::asset('img/notifications_FILL0_wght400_GRAD0_opsz48.svg') }}" alt="" srcset="">
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          {{ $penaltyCount }}
+          {{$penaltyCount}}
         </span>
       </div>
     </a>
@@ -90,6 +90,19 @@
     </div>
     @endforeach
   </div>
+  <style>
+    .pagination .page-item.active .page-link {
+      background-color: #343a40 !important;
+      color: #fff !important;
+    }
+  </style>
+
+  </style>
+
+  <div class="d-flex justify-content-center">
+    {{ $books->links() }}
+  </div>
+
 </body>
 <script type="text/javascript" src="{{ URL::asset('bootstrap/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>
 

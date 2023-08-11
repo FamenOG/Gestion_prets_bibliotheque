@@ -14,29 +14,28 @@ class BookController extends Controller
     public function catalog(Request $request, Category $category)
     {
         if ($request->has('search')) {
-            $books = Book::query()
-                ->where('title', 'LIKE', "%{$request->search}%")
+            $booksQuery = Book::where('title', 'LIKE', "%{$request->search}%")
                 ->orWhere('summary', 'LIKE', "%{$request->search}%")
                 ->orWhere('ISBN', 'LIKE', "%{$request->search}%")
                 ->orWhereHas('author', function ($query) use ($request) {
                     $query->where('name', 'LIKE', "%{$request->search}%");
                 })
-                ->orderBy('title', 'asc')
-                // ->paginate(1)
-                ->get();
+                ->orderBy('title', 'asc');
         } else {
-            $books = $category->books->sortBy('title');
+            $booksQuery = $category->books->toQuery()
+            ->orderBy('title');
         }
+        $books= $booksQuery->paginate(1);
+        $data['books'] = $books;
 
         $penaltyCount = 0;
         foreach ($books as $book) {
             $penalty = $book->verifyLate();
             if ($penalty) {
-                $penaltyCount++;
+                dd($penaltyCount);
             }
         }
-        
-        $data['books'] = $books;
+
         $data['penaltyCount'] = $penaltyCount;
         $data['user'] = $this->user;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
