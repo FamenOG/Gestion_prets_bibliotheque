@@ -45,6 +45,7 @@ class Book extends Model
     }
 
 
+
     public function getStatus()
     {
         switch ($this->status) {

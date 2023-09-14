@@ -41,8 +41,8 @@ class Librarian extends User
             $daysLate = $book->getLate($loan, $back);
             // $daysLate = -2;
             // dd($daysLate);
-            if ($daysLate < 0){
-                $penaltyAmount = 5000 * -($daysLate);
+            if ($loan->back_date < $back->back_date ){
+                $penaltyAmount = 5000 * $daysLate;
                 $penalty = new Penalty($back->id, 1, $this->id, $penaltyAmount);
                 $penalty->save();
             }
