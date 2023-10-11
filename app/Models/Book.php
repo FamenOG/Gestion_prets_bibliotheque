@@ -97,5 +97,20 @@ class Book extends Model
         $interval = $datetime1->diff($datetime2);
         $days = $interval->format('%a');
         return $days;
+
+    }
+    public function verifyLate()
+    {
+        $timestamp=Carbon::now('Africa/Nairobi');
+        if($timestamp > $this->back_date){
+            $back_date = new \DateTime($this->back_date);
+            $timestamp = new \DateTime($timestamp);
+            $interval = $back_date->diff($timestamp);
+            $daysLate = $interval->format('%a');   
+        }
+        else{
+            return null;
+        }
+        return $daysLate;
     }
 }

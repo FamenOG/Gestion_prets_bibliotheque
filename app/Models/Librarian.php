@@ -38,9 +38,9 @@ class Librarian extends User
             $book->updateStatus(0);
             $back = new Back($this->id, $loan->id, Carbon::now('Africa/Nairobi'));
             $back->save();
-            $daysLate = $book->getLate($loan, $back);
-
+            
             if ($loan->back_date < $back->back_date) {
+                $daysLate = $book->getLate($loan, $back);
                 $penaltyAmount = 5000 * $daysLate;
                 $penalty = new Penalty($back->id, 2, $this->id, $penaltyAmount);
                 $penalty->save();

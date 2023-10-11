@@ -26,7 +26,7 @@ SELECT
     l.back_date,
     l.client_id,
     l.id as loan_id,
-    c.name
+    c.name as librarian
 FROM v_loan_no_back l
     JOIN books b ON l.book_id = b.id
     JOIN v_librarian c ON c.id = l.librarian_id
