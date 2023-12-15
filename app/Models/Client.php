@@ -19,7 +19,7 @@ class Client extends User
     }
 
     public function getBooks() {
-        return DB::table('v_book_loaned')->where('client_id', $this->id)->get();
+        return Library::where('client_id', $this->id)->get();
     }
 
     

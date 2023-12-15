@@ -28,7 +28,16 @@ class BookController extends Controller
             $books = $category->books->sortBy('title');
         }
 
+        $penaltyCount = 0;
+        foreach ($books as $book) {
+            $penalty = $book->verifyLate();
+            if ($penalty) {
+                $penaltyCount++;
+            }
+        }
+        
         $data['books'] = $books;
+        $data['penaltyCount'] = $penaltyCount;
         $data['user'] = $this->user;
         $data['limitedCategories'] = Category::offset(0)->limit(6)->get();
         $data['categories'] = Category::offset(6)->limit(10)->get();
@@ -58,7 +67,9 @@ class BookController extends Controller
     {
         $data['user'] = $this->user;
         $data['client'] = $client;
-        $data['books'] = $client->getBooks();
+        $books = $client->getBooks();
+        $data['books'] = $books;
+
         return view('book.client.library')->with($data);
     }
 

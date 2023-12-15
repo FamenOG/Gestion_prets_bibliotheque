@@ -22,7 +22,7 @@
             <h2 class="text-center">Library</h2>
             <div class="overflow-auto h-75 scroll">
                 @foreach ($books as $book)
-                <div class="row p-3 rounded-3 my-5 alert alert-danger">
+                <div class="row p-3 rounded-3 my-5 {{ $book->verifyLate() ? 'alert alert-danger' : '' }}">
                     <div class="my-4 d-flex flex-nowrap w-50 col-md-4">
                         <a href="http://"><img src="{{ URL::asset('img/' . $book->cover) }}" class="rounded-3" style="width: 100px; height: 100px; object-fit: cover;"></a>
                         <div class="ms-3">
